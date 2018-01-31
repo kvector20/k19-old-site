@@ -1,0 +1,81 @@
+body, .pusher {
+	background: #f8f8f8 !important;
+}
+
+.container .form {
+	margin: 50px 0;
+	padding: 20px;
+	box-shadow: 0 0 4px #999;
+	background: #fff !important;
+}
+
+.container .form h2 {
+	font-family: 'Courgette', cursive;
+    color: #fff;
+    background: -webkit-linear-gradient(left, #b5102f, #3b3a3a);
+    font-size: 35px;
+    padding: 20px 0;
+    margin-top: -50px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px #777;
+}
+
+.container .workshops {
+	padding: 10px 0;
+	display: none;
+}
+
+.embed-responsive {
+	border: 3px solid #d85f5f;
+}
+
+.container .error {
+	width: 50%; 
+	position:fixed; 
+	bottom:20px; 
+	right:20px;
+	z-index: 200;
+}
+
+@media (max-width: 922px) {
+	.container .error {
+		width: 100%;
+		right: 0;
+	}
+}
+
+.success {
+	font-size: 50px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 200px 0;
+    z-index: 200;
+    background: rgba(3, 3, 3, 0.7);
+}
+
+.success i {
+	-webkit-animation: rotate .7s ease-in-out;
+	-o-animation: rotate .7s ease-in-out;
+	animation: rotate .7s ease-in-out;
+}
+
+.success a {
+	color: red
+}
+
+.form-group label {
+	color: #555;
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(45deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
+}

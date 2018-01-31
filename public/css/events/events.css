@@ -1,0 +1,83 @@
+h1 {
+    text-align: center;
+    color: #BEB5B5;
+    margin-top: 25px;
+    font-family: serif;
+    font-size: 300%;
+    font-weight: bold;
+}
+
+section .timeline {
+    border-left: solid 1px #BEB5B5;
+    width: 80%;
+    margin-top: 100px;
+}
+
+section .timeline .event {
+    margin-bottom: 70px;
+}
+
+section .timeline .event .event-head:hover {
+    cursor: pointer;
+}
+
+section .timeline .event .event-head .number {
+    text-align: center;
+    width: 25px;
+    height: 25px;
+    color: white;
+    background-color: #4c83fa;
+    border-radius: 50%;
+    position: relative;
+    top: -20px;
+    left: -29px;
+    display: inline-block;
+}
+
+section .timeline .event .event-head .circle {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    top: -25px;
+    left: -29px;
+    background-color: white;
+    display: inline-block;
+}
+
+section .timeline .event .event-head .circle .number {
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    color: white;
+    background-color: #4c83fa;
+    border-radius: 50%;
+    top: 7px;
+    left: 0px;
+    display: inline-block;
+}
+
+@media (max-width: 550px) {
+    section .timeline .event .event-head .time {
+        font-size: 17.5px;
+        color: #CCC;
+        position: relative;
+        top: -17px;
+        display: inline-block;
+    }
+}
+
+@media (min-width: 550px) {
+    section .timeline .event .event-head .time {
+        font-size: 20px;
+        color: #CCC;
+        position: relative;
+        top: -15px;
+        display: inline-block;
+    }
+}
+
+section .timeline .event .event-content {
+    padding-top: 20px;
+    color: #161616;
+    display: none;
+}

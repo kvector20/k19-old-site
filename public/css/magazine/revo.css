@@ -1,0 +1,19 @@
+.cloud {
+    position: absolute;
+    width: 500px;
+    top: -20px;
+    right: -100px;
+    transform: scale(0.5);
+    /* visibility: hidden; */
+    animation: bounce 6s infinite ease-in-out;
+}
+
+@keyframes bounce {
+    0%,
+    100% {
+        transform: scale(0.5) rotate(10deg) translateY(-25px);
+    }
+    50% {
+        transform: scale(0.5) rotate(-10deg) translateY(25px);
+    }
+}
