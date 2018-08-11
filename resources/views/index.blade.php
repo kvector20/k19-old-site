@@ -110,25 +110,25 @@
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="item-box">
                         <img src="images/one.jpg" />
-                        <button class="btn btn-outline-dark btn-lg btn-block"><h3><a href="projects/Juniors.php">Juniors</a></h3></button>
+                        <button class="btn btn-outline-dark btn-lg btn-block"><h3><a href="{{ url('/projects/juniors') }}">Juniors</a></h3></button>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="item-box">
                         <img src="images/two.jpg" />
-                        <button class="btn btn-outline-dark btn-lg btn-block"><h3><a href="projects/Magazine.php">Magazine</a></h3></button>
+                        <button class="btn btn-outline-dark btn-lg btn-block"><h3><a href="{{ url('/projects/magazine') }}">Magazine</a></h3></button>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="item-box">
                         <img src="images/three.jpg" />
-                        <button class="btn btn-outline-dark btn-lg btn-block"><h3><a href="projects/Academic.php">Academic</a></h3></button>
+                        <button class="btn btn-outline-dark btn-lg btn-block"><h3><a href="{{ url('/projects/academic') }}">Academic</a></h3></button>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="item-box">
                         <img src="images/four.jpg" />
-                        <button class="btn btn-outline-dark btn-lg btn-block "><h3><a href="projects/Events.php">Events</a></h3></button>
+                        <button class="btn btn-outline-dark btn-lg btn-block "><h3><a href="{{ url('/projects/events') }}">Events</a></h3></button>
                     </div>
                 </div>
             </div>

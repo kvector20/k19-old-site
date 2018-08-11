@@ -12,30 +12,62 @@
               @endif" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>{{ Auth::user()->username }}</p>
+          <p>{{ Auth::user()->name }}</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
-      <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
-        {{-- <li><a href="{{ url('admin/courses') }}"><i class="fa fa-circle-o text-red"></i> <span>Courses</span></a></li>
-        <li><a href="{{ url('admin/students') }}"><i class="fa fa-circle-o text-yellow"></i> <span>Students</span></a></li>
-        <li><a href="{{ url('admin/professors') }}"><i class="fa fa-circle-o text-aqua"></i> <span>Professors</span></a></li>
-        <li><a href="{{ url('admin/employees') }}"><i class="fa fa-circle-o text-green"></i> <span>Employees</span></a></li>
-        <li><a href="{{ url('admin/rooms') }}"><i class="fa fa-circle-o text-blue"></i> <span>Rooms</span></a></li>
-        <li><a href="{{ url('admin/admins') }}"><i class="fa fa-circle-o text-purple"></i> <span>Admins</span></a></li>
-        <li><a href="{{ url('admin/branches') }}"><i class="fa fa-circle-o text-maroon"></i> <span>Branches</span></a></li> --}}
+        @can('admins.view', Auth::user())
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-users"></i> <span>Admin</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li><a href="{{ route('admins.index') }}"><i class="fa text-red fa-circle-o"></i> View</a></li>
+            @can('admins.create', Auth::user())
+              <li><a href="{{ route('admins.create') }}"><i class="fa text-purple fa-circle-o"></i> New</a></li>
+            @endcan
+          </ul>
+        </li>
+        @endcan
+
+        @can('roles.view', Auth::user())
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Roles</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li><a href="{{ route('roles.index') }}"><i class="fa text-red fa-circle-o"></i> View</a></li>
+            @can('roles.create', Auth::user())
+              <li><a href="{{ route('roles.create') }}"><i class="fa text-purple fa-circle-o"></i> New</a></li>
+            @endcan
+          </ul>
+        </li>
+        @endcan
+
+        @can('permissions.view', Auth::user())
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-check-circle"></i> <span>Permissions</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li><a href="{{ route('permissions.index') }}"><i class="fa text-red fa-circle-o"></i> View</a></li>
+            @can('permissions.create', Auth::user())
+              <li><a href="{{ route('permissions.create') }}"><i class="fa text-purple fa-circle-o"></i> New</a></li>
+            @endcan
+          </ul>
+        </li>
+        @endcan
       </ul>
     </section>
     <!-- /.sidebar -->

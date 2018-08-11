@@ -17,4 +17,17 @@
 <!-- admin_styleLTE for demo purposes -->
 <script src="{{ asset('/admin_style/js/demo.js') }}"></script>
 
+<script>
+	$(function(){
+	    $('a').each(function(){
+	        var $this = $(this);
+	        // if the current path is like this link, make it active
+	        if($this.attr('href') == window.location){
+	            $this.addClass('active');
+	            $this.parents('li').addClass('active');
+	        }
+	    })
+	})
+</script>
+
 @yield('footer')

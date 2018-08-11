@@ -16,7 +16,6 @@ class CreateMheadlinesTable extends Migration
         Schema::create('mheadlines', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('image');
             $table->timestamps();
         });
     }

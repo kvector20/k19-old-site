@@ -1,16 +1,22 @@
 h1 {
-    text-align: center;
-    color: #BEB5B5;
     margin-top: 25px;
     font-family: serif;
     font-size: 300%;
     font-weight: bold;
+    font-family: 'Courgette', cursive;
+    color: red;
+}
+
+.event .card {
+    border: none;
+    padding: 1rem;
+    box-shadow: 0 0 10px #ccc;
 }
 
 section .timeline {
     border-left: solid 1px #BEB5B5;
     width: 80%;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 section .timeline .event {
@@ -40,7 +46,6 @@ section .timeline .event .event-head .circle {
     position: relative;
     top: -25px;
     left: -29px;
-    background-color: white;
     display: inline-block;
 }
 
@@ -49,35 +54,281 @@ section .timeline .event .event-head .circle .number {
     height: 26px;
     text-align: center;
     color: white;
-    background-color: #4c83fa;
+    background-color: red;
     border-radius: 50%;
     top: 7px;
     left: 0px;
     display: inline-block;
 }
 
+section .timeline .event .event-head .time {
+    margin-left: -30px;
+    color: red;
+    position: relative;
+    display: inline-block;
+    font-family: 'Courgette', cursive;
+}
+
 @media (max-width: 550px) {
     section .timeline .event .event-head .time {
         font-size: 17.5px;
-        color: #CCC;
-        position: relative;
         top: -17px;
-        display: inline-block;
+        
     }
 }
 
 @media (min-width: 550px) {
     section .timeline .event .event-head .time {
         font-size: 20px;
-        color: #CCC;
-        position: relative;
         top: -15px;
-        display: inline-block;
     }
 }
 
-section .timeline .event .event-content {
-    padding-top: 20px;
-    color: #161616;
-    display: none;
+body {
+  overflow: hidden;
+  overflow-y: scroll;
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(#e0d1d1));
+  background: linear-gradient(white, #e0d1d1);
+  -webkit-box-shadow: inset 0 5vh 30vh 5vh #d6c2c2;
+          box-shadow: inset 0 5vh 30vh 5vh #d6c2c2;
 }
+
+.pusher.dimmed {
+    overflow: hidden;
+}
+
+.balloon {
+  top: 200vh;
+  opacity: 0.95;
+  position: absolute;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+  width: 5rem;
+  height: 5rem;
+  background: #faf9f9;
+  border-radius: 10rem 10rem 4rem 10rem;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-box-shadow: inset -0.5rem -0.5rem 5rem -0.5rem #c99c9c, 3rem 3rem 1.5rem rgba(153, 102, 102, 0.2);
+          box-shadow: inset -0.5rem -0.5rem 5rem -0.5rem #c99c9c, 3rem 3rem 1.5rem rgba(153, 102, 102, 0.2);
+  -webkit-animation: float1 10s infinite ease-out;
+          animation: float1 10s infinite ease-out;
+}
+@-webkit-keyframes float1 {
+  0% {
+    -webkit-transform: rotate(40deg) translateY(0) translateX(0);
+            transform: rotate(40deg) translateY(0) translateX(0);
+  }
+  100% {
+    -webkit-transform: rotate(50deg) translateY(-200vh) translateX(-200vh);
+            transform: rotate(50deg) translateY(-200vh) translateX(-200vh);
+  }
+}
+@keyframes float1 {
+  0% {
+    -webkit-transform: rotate(40deg) translateY(0) translateX(0);
+            transform: rotate(40deg) translateY(0) translateX(0);
+  }
+  100% {
+    -webkit-transform: rotate(50deg) translateY(-200vh) translateX(-200vh);
+            transform: rotate(50deg) translateY(-200vh) translateX(-200vh);
+  }
+}
+@-webkit-keyframes float2 {
+  0% {
+    -webkit-transform: rotate(55deg) translateY(0) translateX(0);
+            transform: rotate(55deg) translateY(0) translateX(0);
+  }
+  100% {
+    -webkit-transform: rotate(45deg) translateY(-200vh) translateX(-200vh);
+            transform: rotate(45deg) translateY(-200vh) translateX(-200vh);
+  }
+}
+@keyframes float2 {
+  0% {
+    -webkit-transform: rotate(55deg) translateY(0) translateX(0);
+            transform: rotate(55deg) translateY(0) translateX(0);
+  }
+  100% {
+    -webkit-transform: rotate(45deg) translateY(-200vh) translateX(-200vh);
+            transform: rotate(45deg) translateY(-200vh) translateX(-200vh);
+  }
+}
+@-webkit-keyframes float3 {
+  0% {
+    -webkit-transform: rotate(45deg) translateY(0) translateX(0);
+            transform: rotate(45deg) translateY(0) translateX(0);
+  }
+  100% {
+    -webkit-transform: rotate(35deg) translateY(-200vh) translateX(-200vh);
+            transform: rotate(35deg) translateY(-200vh) translateX(-200vh);
+  }
+}
+@keyframes float3 {
+  0% {
+    -webkit-transform: rotate(45deg) translateY(0) translateX(0);
+            transform: rotate(45deg) translateY(0) translateX(0);
+  }
+  100% {
+    -webkit-transform: rotate(35deg) translateY(-200vh) translateX(-200vh);
+            transform: rotate(35deg) translateY(-200vh) translateX(-200vh);
+  }
+}
+@-webkit-keyframes floatfront1 {
+  0% {
+    -webkit-transform: scale(1.3) rotate(40deg) translateY(0) translateX(0);
+            transform: scale(1.3) rotate(40deg) translateY(0) translateX(0);
+  }
+  100% {
+    -webkit-transform: scale(1.3) rotate(50deg) translateY(-200vh) translateX(-200vh);
+            transform: scale(1.3) rotate(50deg) translateY(-200vh) translateX(-200vh);
+  }
+}
+@keyframes floatfront1 {
+  0% {
+    -webkit-transform: scale(1.3) rotate(40deg) translateY(0) translateX(0);
+            transform: scale(1.3) rotate(40deg) translateY(0) translateX(0);
+  }
+  100% {
+    -webkit-transform: scale(1.3) rotate(50deg) translateY(-200vh) translateX(-200vh);
+            transform: scale(1.3) rotate(50deg) translateY(-200vh) translateX(-200vh);
+  }
+}
+@-webkit-keyframes floatfront2 {
+  0% {
+    -webkit-transform: scale(1.3) rotate(55deg) translateY(0) translateX(0);
+            transform: scale(1.3) rotate(55deg) translateY(0) translateX(0);
+  }
+  100% {
+    -webkit-transform: scale(1.3) rotate(45deg) translateY(-200vh) translateX(-200vh);
+            transform: scale(1.3) rotate(45deg) translateY(-200vh) translateX(-200vh);
+  }
+}
+@keyframes floatfront2 {
+  0% {
+    -webkit-transform: scale(1.3) rotate(55deg) translateY(0) translateX(0);
+            transform: scale(1.3) rotate(55deg) translateY(0) translateX(0);
+  }
+  100% {
+    -webkit-transform: scale(1.3) rotate(45deg) translateY(-200vh) translateX(-200vh);
+            transform: scale(1.3) rotate(45deg) translateY(-200vh) translateX(-200vh);
+  }
+}
+@-webkit-keyframes floatfront3 {
+  0% {
+    -webkit-transform: scale(1.3) rotate(45deg) translateY(0) translateX(0);
+            transform: scale(1.3) rotate(45deg) translateY(0) translateX(0);
+  }
+  100% {
+    -webkit-transform: scale(1.3) rotate(35deg) translateY(-200vh) translateX(-200vh);
+            transform: scale(1.3) rotate(35deg) translateY(-200vh) translateX(-200vh);
+  }
+}
+@keyframes floatfront3 {
+  0% {
+    -webkit-transform: scale(1.3) rotate(45deg) translateY(0) translateX(0);
+            transform: scale(1.3) rotate(45deg) translateY(0) translateX(0);
+  }
+  100% {
+    -webkit-transform: scale(1.3) rotate(35deg) translateY(-200vh) translateX(-200vh);
+            transform: scale(1.3) rotate(35deg) translateY(-200vh) translateX(-200vh);
+  }
+}
+.balloon:after {
+  content: '';
+  position: absolute;
+  bottom: -.05rem;
+  right: -.05rem;
+  border-top: 0.5rem solid transparent;
+  border-bottom: 0.5rem solid transparent;
+  border-right: 0.9rem solid #dbbdbd;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  border-radius: 1rem;
+}
+
+.holder.back {
+  position: relative;
+  z-index: 2;
+}
+.holder.back .balloon:nth-child(1) {
+  left: 50%;
+  -webkit-animation: float2 19.5s infinite cubic-bezier(0.47, 0, 0.745, 0.715);
+          animation: float2 19.5s infinite cubic-bezier(0.47, 0, 0.745, 0.715);
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+.holder.back .balloon:nth-child(2) {
+  left: 20%;
+  -webkit-animation: float1 20s infinite cubic-bezier(0.47, 0, 0.745, 0.715);
+          animation: float1 20s infinite cubic-bezier(0.47, 0, 0.745, 0.715);
+  -webkit-animation-delay: 3.2s;
+          animation-delay: 3.2s;
+}
+.holder.back .balloon:nth-child(3) {
+  left: 90%;
+  -webkit-animation: float3 10.5s infinite cubic-bezier(0.47, 0, 0.745, 0.715);
+          animation: float3 10.5s infinite cubic-bezier(0.47, 0, 0.745, 0.715);
+  -webkit-animation-delay: 7.7s;
+          animation-delay: 7.7s;
+}
+.holder.back .balloon:nth-child(4) {
+  left: 70%;
+  -webkit-animation: float1 9s infinite cubic-bezier(0.47, 0, 0.745, 0.715);
+          animation: float1 9s infinite cubic-bezier(0.47, 0, 0.745, 0.715);
+  -webkit-animation-delay: 1.3s;
+          animation-delay: 1.3s;
+}
+.holder.back .balloon:nth-child(5) {
+  left: 35%;
+  -webkit-animation: float2 10.2s infinite cubic-bezier(0.47, 0, 0.745, 0.715);
+          animation: float2 10.2s infinite cubic-bezier(0.47, 0, 0.745, 0.715);
+  -webkit-animation-delay: 5.6s;
+          animation-delay: 5.6s;
+}
+
+.holder.front {
+  position: relative;
+  z-index: 4;
+}
+.holder.front .balloon {
+  -webkit-box-shadow: inset -0.5rem -0.5rem 5rem -0.5rem #c99c9c, 8rem 8rem 4rem rgba(153, 102, 102, 0.2);
+          box-shadow: inset -0.5rem -0.5rem 5rem -0.5rem #c99c9c, 8rem 8rem 4rem rgba(153, 102, 102, 0.2);
+}
+.holder.front .balloon:nth-child(1) {
+  left: 80%;
+  -webkit-animation: floatfront1 20s infinite cubic-bezier(0.47, 0, 0.745, 0.715);
+          animation: floatfront1 20s infinite cubic-bezier(0.47, 0, 0.745, 0.715);
+  -webkit-animation-delay: 2.8s;
+          animation-delay: 2.8s;
+}
+.holder.front .balloon:nth-child(2) {
+  left: 35%;
+  -webkit-animation: floatfront1 20s infinite cubic-bezier(0.47, 0, 0.745, 0.715);
+          animation: floatfront1 20s infinite cubic-bezier(0.47, 0, 0.745, 0.715);
+  -webkit-animation-delay: 1.4s;
+          animation-delay: 1.4s;
+}
+.holder.front .balloon:nth-child(3) {
+  left: 7%;
+  -webkit-animation: floatfront3 20s infinite cubic-bezier(0.47, 0, 0.745, 0.715);
+          animation: floatfront3 20s infinite cubic-bezier(0.47, 0, 0.745, 0.715);
+  -webkit-animation-delay: 7.7s;
+          animation-delay: 7.7s;
+}
+.holder.front .balloon:nth-child(4) {
+  left: 46%;
+  -webkit-animation: floatfront2 20s infinite cubic-bezier(0.47, 0, 0.745, 0.715);
+          animation: floatfront2 20s infinite cubic-bezier(0.47, 0, 0.745, 0.715);
+  -webkit-animation-delay: 6.3s;
+          animation-delay: 6.3s;
+}
+.holder.front .balloon:nth-child(5) {
+  left: 75%;
+  -webkit-animation: floatfront1 20s infinite cubic-bezier(0.47, 0, 0.745, 0.715);
+          animation: floatfront1 20s infinite cubic-bezier(0.47, 0, 0.745, 0.715);
+  -webkit-animation-delay: 8.9s;
+          animation-delay: 8.9s;
+}
+
+

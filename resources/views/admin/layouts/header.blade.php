@@ -41,6 +41,7 @@
                 <p>
                   {{ Auth::user()->name }}
                 </p>
+                <p><small>{{ Auth::user()->position->committee }} {{ ucfirst(Auth::user()->position->position) }}</small></p>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">

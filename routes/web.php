@@ -23,9 +23,8 @@ Route::get('/game', function () {
     return view('game.game');
 });
 
-Route::get('/events', function () {
-    return view('events.events');
-});
+Route::get('/events', 'User\eventsConteroller@events');
+Route::get('/events/career5', 'User\eventsConteroller@career');
 
 Route::get('/projects/academic', 'User\projectsController@academic');
 Route::get('/projects/magazine', 'User\projectsController@magazine');
@@ -38,10 +37,27 @@ Route::get('/magazine', 'User\magazineController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::group(['namespace' => 'Admin'],function(){
+	// get admin homepage
+	Route::GET('admin/home', 'adminsController@index');
+	// admin profile
+	Route::GET('admin/profile', 'ProfileController@index')->name('admin.profile');
+	// change profile image
+	Route::POST('admin/photo', 'ProfileController@updatePhoto')->name('admin.photo');
+	// update admin data
+	Route::PUT('admin/update', 'ProfileController@update')->name('admin.update');
+	// change admin password
+	Route::POST('admin/password', 'ProfileController@password')->name('admin.password');
+	// get all admins
+	Route::resource('admin/admins', 'AdminsController');
+	Route::resource('admin/roles', 'RolesController');
+	Route::resource('admin/permissions', 'PermissionsController');
+});
+
+
+
 // Admin routes
 Route::group(['namespace' => 'Auth'],function(){
-	// get admin homepage
-	Route::GET('admin/home', 'AdminController@index');
 	// get admin login page
 	Route::GET('admin','LoginController@showLoginForm')->name('admin.login');
 	// login with admin
@@ -53,6 +69,7 @@ Route::group(['namespace' => 'Auth'],function(){
 	// reset admin password
 	Route::POST('admin-password/reset','ResetPasswordController@reset');
 	// get page where admin reset password
-	Route::GET('admin-password/reset/{token}','ResetPasswordController@showResetForm')->name('admin.password.reset');
+	Route::GET('admin-password/reset/{token}','ResetPasswordController@showResetForm')->name('password.reset');
+	//logout
 	Route::POST('logout','LoginController@logout');
 });

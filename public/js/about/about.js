@@ -151,8 +151,8 @@ $(function() {
         ],
     };
 
-    $("#committees").on("click", ".card button", function() {
-        var headingText = $(this).siblings("h4").text();
+    $("#committees").on("click", ".cont button", function() {
+        var headingText = $(this).children("b").text();
         $(".modal-title").text(headingText);
         $(".modal-body").html("<ul></ul>");
         var arrayLength = info[headingText].length;
@@ -164,15 +164,11 @@ $(function() {
     for (var key in info) {
         $("#committees").append(
             '<div class="col-lg-4">' +
-            '<div class="card text-center">' +
-            '<div class="card-header">Committee</div>' +
-            '<div class="card-block">' +
-            '<div class="overlay">' +
-            '<h4 class="card-title">' + key +
-            '</h4>' +
-            '<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-danger btn-block">More Information</button>' +
-            '</div>' +
-            '</div>' +
+            '<div class="cont text-center">' +
+            ' <div class="icon"> <img src="/images/committees icons/'+
+            key +
+            '.png" class="img-fluid" ></div>'+
+            '<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-block btn-info"><b >'+ key +'</b></button>' +
             '</div>' +
             '</div>'
         );
