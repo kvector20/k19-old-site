@@ -17,10 +17,14 @@ class CreateMtopicsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('body')->nullable();
-            $table->integer('headline')->unsigned();
+            $table->string('image')->nullable();
+            $table->integer('headline_id')->unsigned();
+            $table->integer('user_id')->unsigned();
 
-            $table->foreign('headline')->references('id')->on('mheadlines')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('views');
+            $table->foreign('headline_id')->references('id')->on('mheadlines')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('views')->default(0);
+            $table->timestamp('publish')->nullable();
             $table->timestamps();
         });
     }

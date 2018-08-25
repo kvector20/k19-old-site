@@ -18,21 +18,55 @@
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
+        @can('topics.view', Auth::user())
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-book"></i> <span>Topics</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('topics.index') }}"><i class="fa text-red fa-circle-o"></i> View</a></li>
+              @can('topics.create', Auth::user())
+                <li><a href="{{ route('topics.create') }}"><i class="fa text-purple fa-circle-o"></i> New</a></li>
+              @endcan
+            </ul>
+          </li>
+        @endcan
+
+        @can('headlines.view', Auth::user())
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-file"></i> <span>Headlines</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('headlines.index') }}"><i class="fa text-red fa-circle-o"></i> View</a></li>
+              @can('headlines.create', Auth::user())
+                <li><a href="{{ route('headlines.create') }}"><i class="fa text-purple fa-circle-o"></i> New</a></li>
+              @endcan
+            </ul>
+          </li>
+        @endcan
+
         @can('admins.view', Auth::user())
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-users"></i> <span>Admin</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-users"></i> <span>Admins</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
               <li><a href="{{ route('admins.index') }}"><i class="fa text-red fa-circle-o"></i> View</a></li>
-            @can('admins.create', Auth::user())
-              <li><a href="{{ route('admins.create') }}"><i class="fa text-purple fa-circle-o"></i> New</a></li>
-            @endcan
-          </ul>
-        </li>
+              @can('admins.create', Auth::user())
+                <li><a href="{{ route('admins.create') }}"><i class="fa text-purple fa-circle-o"></i> New</a></li>
+              @endcan
+            </ul>
+          </li>
         @endcan
 
         @can('roles.view', Auth::user())

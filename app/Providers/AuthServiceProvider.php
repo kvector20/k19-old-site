@@ -28,5 +28,8 @@ class AuthServiceProvider extends ServiceProvider
         Gate::resource('admins', 'App\Policies\AdminsPolicy');
         Gate::resource('roles', 'App\Policies\RolesPolicy');
         Gate::resource('permissions', 'App\Policies\PermissionsPolicy');
+        Gate::resource('headlines', 'App\Policies\HeadlinesPolicy');
+        Gate::resource('topics', 'App\Policies\TopicsPolicy');
+        Gate::define('topics.publish', 'App\Policies\TopicsPolicy@publish');
     }
 }

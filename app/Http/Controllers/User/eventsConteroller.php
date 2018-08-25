@@ -9,11 +9,11 @@ class eventsConteroller extends Controller
 {
 	public function events()
 	{
-		return view('events.events');
+		return view('user.events.index');
 	}
 
-    public function career()
+    public function career5()
     {
-    	return view('events.career');
+    	return view('user.events.career');
     }
 }

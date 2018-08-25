@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('user.index');
 });
 
 Route::get('/about', function () {
@@ -23,23 +23,29 @@ Route::get('/game', function () {
     return view('game.game');
 });
 
-Route::get('/events', 'User\eventsConteroller@events');
-Route::get('/events/career5', 'User\eventsConteroller@career');
 
-Route::get('/projects/academic', 'User\projectsController@academic');
-Route::get('/projects/magazine', 'User\projectsController@magazine');
-Route::get('/projects/juniors', 'User\projectsController@juniors');
-Route::get('/projects/events', 'User\projectsController@events');
 
-Route::get('/magazine', 'User\magazineController@index');
 
 // Auth::routes();
+Route::group(['namespace' => 'User'], function() {
+	Route::get('/projects/academic', 'projectsController@academic');
+	Route::get('/projects/magazine', 'projectsController@magazine');
+	Route::get('/projects/juniors', 'projectsController@juniors');
+	Route::get('/projects/events', 'projectsController@events');
+	
+	Route::get('/events', 'eventsConteroller@events')->name('events');
+	Route::get('/events/career5', 'eventsConteroller@career5');
+
+	Route::get('/k19/magazine/m/{month}', 'magazineController@index')->name('k19.magazine');
+
+});
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['namespace' => 'Admin'],function(){
 	// get admin homepage
-	Route::GET('admin/home', 'adminsController@index');
+	// Route::GET('admin/home', 'adminsController@index');
 	// admin profile
 	Route::GET('admin/profile', 'ProfileController@index')->name('admin.profile');
 	// change profile image
@@ -52,6 +58,9 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::resource('admin/admins', 'AdminsController');
 	Route::resource('admin/roles', 'RolesController');
 	Route::resource('admin/permissions', 'PermissionsController');
+	Route::resource('admin/headlines', 'HeadlinesController');
+	Route::resource('admin/topics', 'TopicsController');
+	Route::post('admin/topics/{topic}/publish', 'TopicsController@publish')->name('topics.publish');
 });
 
 
