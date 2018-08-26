@@ -9,25 +9,21 @@ class projectsController extends Controller
 {
     public function academic()
     {
-    	$project = 'academic';
-    	return view('projects.academic', compact('project'));
+    	return view('user.projects.academic');
     }
 
     public function events()
     {
-    	$project = 'events';
-    	return view('projects.events', compact('project'));
+    	return view('user.projects.events');
     }
 
     public function magazine()
     {
-    	$project = 'magazine';
-    	return view('projects.magazine', compact('project'));
+    	return view('user.projects.magazine');
     }
 
     public function juniors()
     {
-    	$project = 'juniors';
-    	return view('projects.juniors', compact('project'));
+    	return view('user.projects.juniors');
     }
 }

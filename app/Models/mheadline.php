@@ -9,6 +9,6 @@ class mheadline extends Model
 {
     public function topics()
     {
-    	return $this->hasMany(mtopic::class, 'headline_id', 'id')->where('publish', '<>', 'null');
+    	return $this->hasMany(mtopic::class, 'headline_id', 'id')->latest()->where('publish', '<>', 'null');
     }
 }

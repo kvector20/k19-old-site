@@ -28,16 +28,22 @@ Route::get('/game', function () {
 
 // Auth::routes();
 Route::group(['namespace' => 'User'], function() {
-	Route::get('/projects/academic', 'projectsController@academic');
-	Route::get('/projects/magazine', 'projectsController@magazine');
-	Route::get('/projects/juniors', 'projectsController@juniors');
-	Route::get('/projects/events', 'projectsController@events');
+	Route::get('/projects/academic', 'projectsController@academic')->name('projects.academic');
+	Route::get('/projects/magazine', 'projectsController@magazine')->name('projects.magazine');
+	Route::get('/projects/juniors', 'projectsController@juniors')->name('projects.juniors');
+	Route::get('/projects/events', 'projectsController@events')->name('projects.events');
 	
 	Route::get('/events', 'eventsConteroller@events')->name('events');
 	Route::get('/events/career5', 'eventsConteroller@career5');
 
-	Route::get('/k19/magazine/m/{month}', 'magazineController@index')->name('k19.magazine');
+	Route::get('/k19/magazine/m/{month}', 'magazineController@index')->name('k19.magazine.month');
+	Route::get('/k19/magazine/h/{headline}', 'magazineController@index_h')->name('k19.magazine.headline');
+	Route::get('/k19/magazine/t/{topic}', 'magazineController@topic')->name('k19.magazine.topic');
+	
+	Route::post('/k19/magazine/c/{topic}', 'magazineController@comment')->name('topic.comment');
 
+	Route::get('/contact', 'ContactController@index')->name('contact');
+	Route::post('/contact', 'ContactController@store')->name('contact');
 });
 
 

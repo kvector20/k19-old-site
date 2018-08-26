@@ -17,10 +17,10 @@
 		          		Projects
 		        	</a>
 		        	<div class="dropdown-menu bg-light" aria-labelledby="navbarDropdownMenuLink">
-		          		<a class="dropdown-item" href="#">Academic</a>
-		          		<a class="dropdown-item" href="#">Juniors</a>
-		          		<a class="dropdown-item" href="#">Events</a>
-		          		<a class="dropdown-item" href="#">Magazine</a>
+		          		<a class="dropdown-item" href="{{ route('projects.academic') }}">Academic</a>
+		          		<a class="dropdown-item" href="{{ route('projects.juniors') }}">Juniors</a>
+		          		<a class="dropdown-item" href="{{ route('projects.events') }}">Events</a>
+		          		<a class="dropdown-item" href="{{ route('projects.magazine') }}">Magazine</a>
 		        	</div>
 		      	</li>
 		      	<li class="nav-item dropdown">
@@ -28,12 +28,12 @@
 		          		Magazine
 		        	</a>
 		        	<div class="dropdown-menu bg-light" aria-labelledby="navbarDropdownMenuLink2">
-		          		<a class="dropdown-item" href="{{ route('k19.magazine', Carbon\Carbon::now()->month) }}">K'19 Magazine</a>
+		          		<a class="dropdown-item" href="{{ route('k19.magazine.month', Carbon\Carbon::now()->month) }}">K'19 Magazine</a>
 		          		<a class="dropdown-item" href="#">K'18 Magazine</a>
 		        	</div>
 		      	</li>
 		      	<li class="nav-item">
-		        	<a class="nav-link" href="#">Contact Us</a>
+		        	<a class="nav-link" href="{{ route('contact') }}">Contact Us</a>
 		      	</li>
 		    </ul>
 	  	</div>
