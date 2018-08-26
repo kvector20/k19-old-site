@@ -6,7 +6,7 @@
 
 @section('head')
 	<link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Aref+Ruqaa" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Aref+Ruqaa" rel="stylesheet">
 	<link href="{{ asset('/user_style/css/froala/froala_style.min.css') }}" rel="stylesheet" />
 @endsection
 
