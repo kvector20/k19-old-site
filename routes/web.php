@@ -51,6 +51,15 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::PUT('admin/update', 'ProfileController@update')->name('admin.update');
 	// change admin password
 	Route::POST('admin/password', 'ProfileController@password')->name('admin.password');
+	// Edit admin education
+	Route::GET('admin/education/edit', 'ProfileController@editEducationView')->name('admin.education.edit');
+	Route::POST('admin/education/edit', 'ProfileController@editEducation')->name('admin.education.edit');
+	// Edit admin experience
+	Route::GET('admin/experience/edit', 'ProfileController@editExperienceView')->name('admin.experience.edit');
+	Route::POST('admin/experience/edit', 'ProfileController@editExperience')->name('admin.experience.edit');
+	// Edit admin personal info
+	Route::GET('admin/info/edit', 'ProfileController@editInfoView')->name('admin.info.edit');
+	Route::POST('admin/info/edit', 'ProfileController@editInfo')->name('admin.info.edit');
 	// get all admins
 	Route::resource('admin/admins', 'AdminsController');
 	Route::resource('admin/roles', 'RolesController');

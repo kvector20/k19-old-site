@@ -102,7 +102,7 @@ Topics
 
 	                			@can('topics.delete', Auth::user())
 		                			<a 
-										href="#" 
+										href="{{ route('topics.destroy',$topic->id) }}" 
 										class="btn btn-danger btn-xs"
 										onclick="
 			                  					event.preventDefault();

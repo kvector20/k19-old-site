@@ -2,6 +2,9 @@
 
 namespace App;
 
+use App\Models\Education;
+use App\Models\Experience;
+use App\Models\PersonalInfo;
 use App\Models\permission;
 use App\Models\role;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -34,5 +37,20 @@ class User extends Authenticatable
     public function position()
     {
         return $this->hasOne('App\Models\role', 'id', 'role');
+    }
+
+    public function experience()
+    {
+        return $this->hasOne(Experience::class);
+    }
+
+    public function education()
+    {
+        return $this->hasOne(Education::class);
+    }
+
+    public function personalInfo()
+    {
+        return $this->hasOne(PersonalInfo::class);
     }
 }

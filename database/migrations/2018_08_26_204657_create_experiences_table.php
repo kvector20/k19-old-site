@@ -17,7 +17,7 @@ class CreateExperiencesTable extends Migration
             $table->increments('id');
             $table->text('experience');
             $table->text('skills');
-            $table->text('cources');
+            $table->text('courses');
             $table->text('hobbies');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

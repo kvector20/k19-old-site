@@ -4,4 +4,4 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond $1 !^(config|core|public|robots\.txt)
 
-RewriteRule ^(.+)$ index.php?ur=$1 [L]
+RewriteRule ^(.+)$ index.php?url=$1 [L]

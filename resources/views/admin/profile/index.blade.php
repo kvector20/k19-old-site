@@ -67,12 +67,14 @@
         <div class="col-md-9">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#settings" data-toggle="tab">Settings</a></li>
+              <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+              <li><a href="#settings" data-toggle="tab">Settings</a></li>
               <li><a href="#change-password" data-toggle="tab">Change Password</a></li>
             </ul>
             <div class="tab-content">
+              @include('admin.profile.info_tab')
 
-              <div class="tab-pane active" id="settings">
+              <div class="tab-pane" id="settings">
 	
         				@foreach ($errors->all() as $error)
                   <div class="alert alert-danger col-sm-9 col-sm-offset-3">{{ $error }}</div>
@@ -164,13 +166,6 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-    </div>
-    <strong>Copyright &copy; 2014-{{ Carbon\Carbon::now()->year }} <a href="{{ url('/') }}">{{ config('app.name') }}</a>.</strong> All rights
-    reserved.
-  </footer>
 
 @endsection
 

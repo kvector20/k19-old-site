@@ -8,6 +8,7 @@ use App\Models\mtopic;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class TopicsController extends Controller
 {
@@ -138,8 +139,13 @@ class TopicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(mtopic $topic)
     {
-        //
+        if (Auth::user()->can('topics.delete')) {
+            Storage::delete([$topic->image]);
+            $topic->delete();
+            return back()->with(['status' => 'Deleted Successfully!!']);
+        }
+        abort(404);
     }
 }
