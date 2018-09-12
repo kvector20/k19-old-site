@@ -14,6 +14,16 @@ class eventsConteroller extends Controller
 
     public function career5()
     {
-    	return view('user.events.career');
+    	return view('user.events.career5');
+    }
+
+    public function opening18()
+    {
+    	return view('user.events.opening18');
+    }
+
+    public function welcome18()
+    {
+    	return view('user.events.welcome18');
     }
 }

@@ -51,7 +51,7 @@
                       <div class="card-body">
                         <h5 class="card-title">The Opening</h5>
                         <p class="card-text">The event that we start the year with our great vectorians.</p>
-                        <a href="opening.php" class="btn btn-danger">Go to event <i class="fa fa-arrow-right"></i></a>
+                        <a href="{{ route('events.opening18') }}" class="btn btn-danger">Go to event <i class="fa fa-arrow-right"></i></a>
                       </div>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                       <div class="card-body">
                         <h5 class="card-title">Welcome Party</h5>
                         <p class="card-text">The event we are celebrating with the our new amazing members who are this year vectorians.</p>
-                        <a href="welcome.php" class="btn btn-danger">Go to event <i class="fa fa-arrow-right"></i></a>
+                        <a href="{{ route('events.welcome18') }}" class="btn btn-danger">Go to event <i class="fa fa-arrow-right"></i></a>
                       </div>
                     </div>
                 </div>

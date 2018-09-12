@@ -38,9 +38,9 @@
             <div id="collapseTwo" class="collapse<?php if(isset($magazine)) {echo 'show';} ?>" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
                 <div class="card-body side">
                     <div class="list-group">
-                        <a href="../magazine/sept_maga.php" class="list-group-item list-group-item-dark">K'19 Magazine</a>
+                        <a href="{{ route('k19.magazine.month', Carbon\Carbon::now()->month) }}" class="list-group-item list-group-item-dark">K'19 Magazine</a>
 
-                        <a href="../oct_magazine/oct_maga.php" class="list-group-item list-group-item-dark">K'19 Magazine</a>
+                        <a href="#" class="list-group-item list-group-item-dark">K'18 Magazine</a>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@
         </div>
 
         <div class="card bg-dark">
-            <a href="{{ url('/about') }}" style="color: inherit; text-decoration: none;">
+            <a href="{{ url('/contact') }}" style="color: inherit; text-decoration: none;">
                 <div class="card-header collapsed" role="tab" id="headingOne">
                     <h5 class="mb-0">
                         <span>

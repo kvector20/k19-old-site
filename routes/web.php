@@ -11,21 +11,6 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('user.index');
-// });
-
-// Route::get('/about', function () {
-//     return view('user.about.about');
-// });
-
-// Route::get('/game', function () {
-//     return view('game.game');
-// });
-
-
-
-
 // Auth::routes();
 Route::group(['namespace' => 'User'], function() {
 	Route::get('/', 'HomeController@index');
@@ -38,7 +23,9 @@ Route::group(['namespace' => 'User'], function() {
 	Route::get('/projects/events', 'projectsController@events')->name('projects.events');
 	
 	Route::get('/events', 'eventsConteroller@events')->name('events');
-	Route::get('/events/career5', 'eventsConteroller@career5');
+	Route::get('/events/career5', 'eventsConteroller@career5')->name('events.career5');
+	Route::get('/events/opening18', 'eventsConteroller@opening18')->name('events.opening18');
+	Route::get('/events/welcome18', 'eventsConteroller@welcome18')->name('events.welcome18');
 
 	Route::get('/k19/magazine/m/{month}', 'magazineController@index')->name('k19.magazine.month');
 	Route::get('/k19/magazine/h/{headline}', 'magazineController@index_h')->name('k19.magazine.headline');
