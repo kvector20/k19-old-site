@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css?family=Aref+Ruqaa');
+body,
+body.pushable,
+.pusher {
+    /* background: #00bfff;
+    */
+    /* Background Gradient for Analagous Colors */
+    /* font: 14px sans-serif; */
+    background: #555 !important;
+}
+
+.letter {
+    z-index: 5100;
+    background: #323232;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin: 26px auto 0;
+    /*max-width: 550px;*/
+    min-height: 300px;
+    padding: 24px;
+    position: relative;
+    /*width: 80%;*/
+}
+
+.letter:before,
+.letter:after {
+    content: "";
+    height: 98%;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+
+.letter:before {
+    background: #333;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    left: -5px;
+    top: 4px;
+    transform: rotate(-2.5deg);
+}
+
+.letter:after {
+    background: #222;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    right: -3px;
+    top: 1px;
+    transform: rotate(1.4deg);
+}
+
+.letter.active {
+    background: #fff;
+    color: #000;
+}
+
+.letter.active:after {
+    background: #f6f6f6;
+}
+
+.letter.active:before {
+    background: #fafafa;
+}
+
+.letter h2 {
+    font-family: 'Aref Ruqaa', serif;
+}
+
+.filter {
+    filter: drop-shadow(7px 7px 30px #e6d610);
+    -webkit-filter: drop-shadow(7px 7px 30px #e6d610);
+    filter: drop-shadow(7px 7px 30px #e6d610);
+    -ms-filter: drop-shadow(7px 7px 30px #e6d610);
+}
+
+.lamp {
+    width: 300px;
+    margin-top: -90px;
+    cursor: pointer;
+}
+
+.light {
+    background: linear-gradient(#ccc, #fff) !important;
+}
+
+a.back_maga img {
+    width: 100px;
+}

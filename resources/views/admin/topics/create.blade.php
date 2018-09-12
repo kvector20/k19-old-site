@@ -78,6 +78,15 @@ New Topic
                       </select>
                     </div>
                   </div>
+                  
+                  <div class="form-group">
+                    <label for="inputName" class="col-sm-3 control-label">PDF Url</label>
+
+                    <div class="col-sm-9">
+                      <input type="url" class="form-control" autofocus id="inputName" placeholder="pdf" required name="pdf" value="{{ old('pdf') }}">
+                    </div>
+                  </div>
+
                   <div class="form-group">
                     <label for="inputName" class="col-sm-3 control-label">Body</label>
 

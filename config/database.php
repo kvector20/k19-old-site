@@ -41,11 +41,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_HOST', 'kvectorfoundation.ipagemysql.com'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'k18'),
-            'username' => env('DB_USERNAME', 'root'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => env('DB_DATABASE', 'k19_data'),
+            'username' => env('DB_USERNAME', 'hady_maher'),
+            'password' => env('DB_PASSWORD', '@Home0233308797@Homeftphome'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

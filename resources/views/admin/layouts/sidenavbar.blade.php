@@ -8,7 +8,7 @@
           <img src="@if (Auth::user()->image == '')
         {{ asset('/images/team2.jpg') }}
         @else
-        {{ Storage::disk('local')->url(Auth::user()->image) }}
+        {{ App\Helpers\Helpers::storage(Auth::user()->image) }}
               @endif" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">

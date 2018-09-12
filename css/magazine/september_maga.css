@@ -1,0 +1,198 @@
+.magazine-cover {
+    background: url("../../images/magazine/cover.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    position: sticky;
+}
+
+@media (max-width: 786px) {
+    .magazine-cover {
+        background: url("../../images/magazine/tablet_cover.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+
+@media (max-width: 370px) {
+    .magazine-cover {
+        background: url("../../images/magazine/mobi_cover.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+
+.magazine-overlay {
+    background: rgba(0, 0, 0, 0.55);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.bottom-part {
+    width: 85%;
+    position: absolute;
+    bottom: 30px;
+}
+
+.the-head {
+    color: #ccc;
+    margin-top: 150px;
+}
+
+.the-head h1 {
+    font-weight: bold;
+    font-size: 60px;
+    margin-bottom: 30px;
+    font-family: 'Courgette', cursive;
+}
+
+.head,
+.header {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.head {
+    display: inline-block;
+}
+
+.header {
+    color: red;
+    display: inline-block;
+}
+
+.magazine-cover .magazine-arrow {
+    text-align: center;
+    color: #ccc;
+    font-size: 40px;
+    cursor: pointer;
+    width: 50px;
+    height: 40px;
+    margin: auto;
+    margin-top: 30px;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.magazine-cover .magazine-arrow:hover {
+    color: #eee;
+}
+
+.magazine-cover .magazine-arrow i {
+    animation: moving 1.5s infinite ease-in-out;
+}
+
+@keyframes moving {
+    0% {
+        transform: translateY(-56px);
+    }
+    100% {
+        transform: translateY(29px);
+    }
+}
+
+
+/*///////////////////////////////////////////////////////////////////////////*/
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.magazine .col-md-4 {
+    padding: 0;
+}
+
+.roboto,
+.brain,
+.two,
+.fant,
+.paper,
+.magni {
+    background-size: cover !important;
+    background-position: center !important;
+    min-height: 400px;
+}
+
+.roboto {
+    background: url("../../images/magazine/sept head/roboto.jpg");
+}
+
+.brain {
+    background: url("../../images/magazine/sept head/brain.jpg");
+    ;
+}
+
+.two {
+    background: url("../../images/magazine/sept head/5.jpg");
+    background-position: bottom !important;
+}
+
+.fant {
+    background: url("../../images/magazine/sept head/fantasia.jpg");
+}
+
+.paper {
+    background: url("../../images/magazine/sept head/paper.jpg");
+}
+
+.magni {
+    background: url("../../images/magazine/sept head/first final.jpg");
+}
+
+.magazine .card-content {
+    color: #ccc;
+    padding-top: 180px;
+    padding-bottom: 20px;
+    width: 80%;
+    margin: auto;
+}
+
+.magazine .card-content a {
+    font-family: 'Reem Kufi', sans-serif;
+    color: #fff;
+    text-decoration: none;
+}
+
+.magazine .card-content a:hover {
+    color: #c5c5c5;
+}
+
+.magazine h3 {
+    text-decoration: none;
+    margin-bottom: 70px;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.magazine h3:hover {
+    text-decoration: none;
+}
+
+.topics {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.topics a {
+    width: 50%;
+    font-size: 16px !important;
+}
+
+.view .img-fluid {
+    box-shadow: 2px 2px 12px #333;
+}
+
+.single-news {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

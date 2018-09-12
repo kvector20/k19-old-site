@@ -1,0 +1,311 @@
+.power.card{
+    box-shadow: 0 0 15px rgba(0, 0, 0, 1)
+}
+
+h1{
+    margin: 50px auto;
+    font-family: 'Kavivanar', cursive;
+}
+
+.valid{
+    box-shadow: 0 0 15px #c8d319;
+}
+
+.invalid{
+    box-shadow: 0 0 15px #99998c;
+}
+
+form input{
+    text-align: center;
+    margin: 80px auto;
+}
+
+.left-wires{
+    margin-top: 95px;
+    position: absolute;
+    display: inline-block;
+    width: 17.1%;
+}
+
+.right-wires{
+    margin-top: -1240px;
+    margin-left: 67%;
+    position: absolute;
+    display: inline-block;
+    width: 17.1%;
+}
+
+.inputs{
+    display: inline-block;
+    margin: 0px 17%;
+    width: 66%;
+}
+
+.btn-line.gray{
+    transition-timing-function: ease-in-out;
+    transition: 2s;
+    border-color: gray;
+}
+
+.btn-line.green{
+    transition-timing-function: ease-in-out;
+    transition: 2s;
+    border-color: green;
+}
+
+.btn-line{
+    border-left: 3px solid gray;
+    background: transparent;
+    height:80px;
+    width: 20px;
+    display: inline-block;
+    position: absolute;
+    margin-top: -80px;
+    margin-left: 7%;
+}
+
+.btn-submit{
+    text-align: center;
+}
+
+.submit.gray{
+    transition-timing-function: ease-in-out;
+    transition: 2s;
+    background: gray;
+    border-color: gray;
+}
+
+.submit.red{
+    transition-timing-function: ease-in-out;
+    transition: 2s;
+    background: #dc3545;
+    border-color: #dc3545;
+}
+
+.submit{
+    color: white;
+    background: gray;
+    border-color:gray;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 80px;
+}
+
+.connection{
+    margin-bottom: 76px;
+    height: 160px;
+}
+
+.dleft{
+    border-left: 3px solid gray;
+}
+
+.dright{
+    border-right: 3px solid gray;
+}
+
+.wire.gray{
+    transition-timing-function: ease-in-out;
+    transition: 2s;
+    border-color: gray;
+}
+
+.wire.black{
+    transition-timing-function: ease-in-out;
+    transition: 2s;
+    border-color: black;
+}
+
+.wire.red{
+    transition-timing-function: ease-in-out;
+    transition: 2s;
+    border-color: rgb(203, 20, 20);
+}
+
+.wire{
+    display: inline-block;
+    position: absolute;
+    border-top: 3px solid gray;
+    border-bottom: 3px solid gray;
+    background-color: transparent;
+}
+
+@media (min-width: 1200px){
+    .riwire{
+        margin-left: 78.7%;
+        margin-top: 5%;
+        width: 10%;
+        height: 120px;
+    }
+    
+    .rowire{
+        margin-left: 78.7%;
+        height: 140px;
+        width: 15%;
+    }
+}
+
+@media (min-width: 991px) and (max-width: 1200px){
+    .riwire{
+        margin-left: 78%;
+        margin-top: 5%;
+        width: 10%;
+        height: 120px;
+    }
+    
+    .rowire{
+        margin-left: 78%;
+        height: 140px;
+        width: 15%;
+    }
+}
+
+@media (max-width: 371px){
+    .riwire{
+        margin-left: 45%;
+        margin-top: 15%;
+        width: 25%;
+        height: 120px;
+    }
+    
+    .rowire{
+        margin-left: 45%;
+        height: 140px;
+        width: 40%;
+    }
+}
+
+@media (min-width: 371px) and (max-width: 401px){
+    .riwire{
+        margin-left: 49%;
+        margin-top: 15%;
+        width: 25%;
+        height: 120px;
+    }
+    
+    .rowire{
+        margin-left: 49%;
+        height: 140px;
+        width: 40%;
+    }
+}
+
+@media (min-width: 401px) and (max-width: 441px){
+    .riwire{
+        margin-left: 53%;
+        margin-top: 15%;
+        width: 25%;
+        height: 120px;
+    }
+    
+    .rowire{
+        margin-left: 53%;
+        height: 140px;
+        width: 40%;
+    }
+}
+
+@media (min-width: 441px) and (max-width: 500px){
+    .riwire{
+        margin-left: 57%;
+        margin-top: 15%;
+        width: 25%;
+        height: 120px;
+    }
+    
+    .rowire{
+        margin-left: 57%;
+        height: 140px;
+        width: 40%;
+    }
+}
+
+@media (min-width: 501px) and (max-width: 768px){
+    .riwire{
+        margin-left: 62%;
+        margin-top: 12%;
+        width: 25%;
+        height: 120px;
+    }
+    
+    .rowire{
+        margin-left: 62%;
+        height: 140px;
+        width: 40%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+    .riwire{
+        margin-left: 71%;
+        margin-top: 7%;
+        width: 21%;
+        height: 120px;
+    }
+    
+    .rowire{
+        margin-left: 71%;
+        height: 140px;
+        width: 30%;
+    }
+}
+
+@media (min-width: 991px){
+    .iwire{
+        margin-left: 87%;
+        margin-top: 5%;
+        width: 10%;
+        height: 120px;
+    }
+    
+    .owire{
+        margin-left: 82%;
+        height: 140px;
+        width: 15%;
+    }
+}
+
+@media (max-width: 500px){
+    .iwire{
+        margin-left: 67%;
+        margin-top: 15%;
+        width: 25%;
+        height: 120px;
+    }
+    
+    .owire{
+        margin-left: 52%;
+        height: 140px;
+        width: 40%;
+    }
+}
+
+@media (min-width: 501px) and (max-width: 768px){
+    .iwire{
+        margin-left: 69%;
+        margin-top: 12%;
+        width: 25%;
+        height: 120px;
+    }
+    
+    .owire{
+        margin-left: 54%;
+        height: 140px;
+        width: 40%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px){
+    .iwire{
+        margin-left: 75%;
+        margin-top: 7%;
+        width: 21%;
+        height: 120px;
+    }
+    
+    .owire{
+        margin-left: 67%;
+        height: 140px;
+        width: 30%;
+    }
+}

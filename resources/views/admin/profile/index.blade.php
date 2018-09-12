@@ -28,7 +28,7 @@
               @if (Auth::user()->image == '')
 				{{ asset('/images/team2.jpg') }}
 				@else
-				{{ Storage::disk('local')->url(Auth::user()->image) }}
+				{{ App\Helpers\Helpers::storage(Auth::user()->image) }}
               @endif" alt="User profile picture">
 
               <h3 class="profile-username text-center">{{ Auth::user()->name }}</h3>

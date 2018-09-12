@@ -56,6 +56,7 @@ class TopicsController extends Controller
             $this->validate($request, [
                 'title' => 'required|string|min:3|unique:mtopics,title',
                 'body'=> 'required|string|min:15',
+                'pdf'=> 'required|url|min:10',
                 'headline' => 'required|exists:mheadlines,id',
                 'image' => 'required|image'
             ]);
@@ -63,6 +64,7 @@ class TopicsController extends Controller
             $topic = new mtopic;
             $topic->title = $request->title;
             $topic->body = $request->body;
+            $topic->pdf = $request->pdf;
             $topic->headline_id = $request->headline;
             $topic->user_id = Auth::id();
             $topic->image = $imagePath;
@@ -88,9 +90,11 @@ class TopicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(mtopic $topic)
     {
-        //
+        if (Auth::user()->can('topics.view')) {
+            return view('admin.topics.show', compact('topic'));
+        }
     }
 
     /**
@@ -99,9 +103,13 @@ class TopicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(mtopic $topic)
     {
-        //
+        if (Auth::user()->can('topics.update')) {
+            $headlines = mheadline::all();
+            return view('admin.topics.edit', compact('headlines', 'topic'));
+        }
+        abort(404);
     }
 
     /**
@@ -111,9 +119,17 @@ class TopicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, mtopic $topic)
     {
-        //
+        if (Auth::user()->can('topics.update')) {
+            $topic->title = $request->title;
+            $topic->body = $request->body;
+            $topic->pdf = $request->pdf;
+            $topic->headline_id = $request->headline;
+            $topic->save();
+            return redirect('admin/topics')->with(['status' => 'Added Successfully!!']);
+        }
+        abort(404);
     }
 
     /**

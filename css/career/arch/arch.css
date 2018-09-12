@@ -1,0 +1,24 @@
+body{
+  margin: 0px; 
+  padding: 0px; 
+  height: 100%;
+}
+
+.content {
+  background: url("../../../images/career/arch2.jpg") center center / cover no-repeat fixed; 
+}
+
+.card-header {
+	font-family: 'Lobster', cursive;
+}
+
+.arch.card {
+	border-right: 20px solid blue;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 1)
+}
+
+.card-body {
+	background: url("../../../images/career/arch.jpg");
+}

@@ -5,7 +5,6 @@
 @endsection
 
 @section('head')
-	<link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Aref+Ruqaa" rel="stylesheet">
 	<link href="{{ asset('/user_style/css/froala/froala_style.min.css') }}" rel="stylesheet" />
 @endsection
@@ -21,11 +20,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="block">
-                    <h2 style="font-family: 'Aref Ruqaa', serif; font-size: 60px">أركان</h2>
+                    <h2 style="font-family: 'Aref Ruqaa', cursive; font-size: 60px">أرْكَانْ</h2>
                     @if (Route::current()->getName() == 'k19.magazine.month')
-                    	<h2 style="font-family: 'Aref Ruqaa', serif;">شهر {{ $dt->locale('ar')->monthName }}</h2>
+                    	<h2 style="font-family: 'Aref Ruqaa', cursive;">شهر {{ $dt->locale('ar')->monthName }}</h2>
                     @elseif (Route::current()->getName() == 'k19.magazine.headline')
-                    	<h2 style="font-family: 'Aref Ruqaa', serif;">عنوان {{ $headline->name }}</h2>
+                    	<h2 style="font-family: 'Aref Ruqaa', cursive;">عنوان {{ $headline->name }}</h2>
                     @endif
                 </div>
                 <div class="text-center">Enrich your knowledge and enjoy the beauty of words.</div>
@@ -90,26 +89,40 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                	@foreach ($topics as $topic)
-	                    <article class="wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">
-	                        <div class="blog-post-image">
-	                            <a href="{{ route('k19.magazine.topic', $topic->id) }}"><img class="img-fluid" src="{{ Storage::disk('local')->url($topic->image) }}" alt="{{ $topic->title }}" /></a>
-	                        </div>
-	                        <div class="blog-content">
-	                            <h2 class="blogpost-title">
-	                            <a href="{{ route('k19.magazine.topic', $topic->id) }}">{{ $topic->title }}</a>
-	                            </h2>
-	                            <div class="blog-meta">
-	                                <span>{{ Carbon\Carbon::parse($topic->publish)->toDayDateTimeString() }}</span>
-	                                <span>by {{ $topic->writer->name }}</span>
-	                                <span><a href="{{ route('k19.magazine.headline', $topic->headline->id) }}">{{ $topic->headline->name }}</a></span>
-	                            </div>
-	                            <p class="fr-view">{!! substr($topic->body, 0, 600) !!}...
-	                            </p>
-	                        </div>
-	                        <a href="{{ route('k19.magazine.topic', $topic->id) }}" class="btn btn-danger">Continue Reading</a>
-	                    </article>
-                	@endforeach
+                	<div class="row">
+						@php
+						$i = 0; 
+						@endphp
+						@foreach ($topics as $topic) 
+							<article class="col-sm-4 wow fadeInDown" data-wow-delay="{{ .3 + (.25 * $i) . 's'}}" data-wow-duration="500ms">
+								<div class="card">
+									<a href="{{ url('k19/magazine/t/' . $topic->id) }}">
+										<img class="card-img-top" src="{{ App\Helpers\Helpers::storage($topic->image)}}" alt="{{ $topic->writer->name}}">
+									</a>
+									<div class="card-body">
+										<a href="{{ url('k19/magazine/h/' . $topic->headline->id) }}">
+											<span class="float-right badge badge-primary">{{ $topic->headline->name}}</span>
+										</a>
+										<br>
+										<a href="{{ url('k19/magazine/t/' . $topic->id) }}">
+											<h5 class="card-title text-truncate" dir="rtl" title="{{ $topic->title }}" style="font-family: 'Cairo', sans-serif;">{{ $topic->title }}</h5>
+										</a>
+										<p class="card-text text-muted">
+											<i class="fa fa-eye"></i> {{ $topic->views}} Veiws
+											<br>
+											<i class="fa fa-comment"></i> {{ count($topic->comments)}} Comments
+											<br>
+											<img class="avatar" src="{{ ($topic->writer->image)? App\Helpers\Helpers::storage($topic->writer->image) : asset('/user_style/images/avatar.jpg')}}" alt="{{ $topic->writer->name}}" data-toggle="tooltip" data-placement="top" title="{{ $topic->writer->position->committee}} {{ $topic->writer->position->position}}"> {{ $topic->writer->name}}
+										</p>
+										<a href="{{ url('k19/magazine/t/' . $topic->id) }}" class="btn btn-primary">Continue Reading</a>
+									</div>
+								</div>
+							</article>
+						@php 
+							$i++;
+						@endphp
+						@endforeach
+					</div>
                 </div>
             </div>
         </div>

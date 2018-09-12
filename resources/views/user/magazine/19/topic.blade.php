@@ -41,7 +41,7 @@ Global Page Section Start
         <div class="row">
             <div class="col-md-9">
                 <div class="post-img">
-                    <img class="img-fluid" alt="{{ $topic->title }}" src="{{ Storage::disk('local')->url($topic->image) }}">
+                    <img class="img-fluid" alt="{{ $topic->title }}" src="{{ App\Helpers\Helpers::storage($topic->image) }}">
                 </div>
                 <div class="post-content">
                     {!! $topic->body !!}
@@ -53,7 +53,7 @@ Global Page Section Start
                     <img class="img-fluid" src="{{ asset('/user_style/images/author/author-bg.jpg') }}">
                     <div class="author-body text-center">
                         <div class="author-img">
-                            <img style="width: 90px; border-radius: 100%; margin-top: -40px; border: 3px solid #fff;" src="{{ Storage::disk('local')->url($topic->writer->image) }}">
+                            <img style="width: 90px; border-radius: 100%; margin-top: -40px; border: 3px solid #fff;" src="{{ App\Helpers\Helpers::storage($topic->writer->image) }}">
                         </div>
                         <div class="author-bio">
                             <h3>{{ $topic->writer->name }}</h3>

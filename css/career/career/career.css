@@ -1,0 +1,13 @@
+.content {
+  background: url("../../../images/career/career3.jpg") center center / cover no-repeat fixed; 
+}
+
+.list-group-item-action:hover i {
+	animation: moving 1s infinite ease-in-out;
+}
+
+@keyframes moving {
+	50% {
+		transform: translateX(-10px);
+	}
+}

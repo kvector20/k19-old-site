@@ -51,7 +51,9 @@ class magazineController extends Controller
     public function topic(mtopic $topic)
     {
     	if ($topic->publish) {
-            $comments = mComment::all();
+            $topic->views++;
+			$topic->save();
+			$comments = $topic->comments;
     		return view('user.magazine.19.topic', compact('topic', 'comments'));
     	}
     	abort(404);

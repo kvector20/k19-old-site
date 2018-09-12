@@ -1,0 +1,368 @@
+* {
+    box-sizing: border-box;
+}
+/*starting about sec*/
+
+body {
+    /*margin-top: 55px;*/
+    overflow: hidden;
+}
+
+
+/* start intro section */
+
+.intro {
+    background: url(../images/intro-1.jpg);
+    color: #fff;
+    height: 100%;
+    background-size: cover;
+}
+
+.intro span,
+.intro h1 {
+    font-size: 60px;
+    font-family: 'Courgette', cursive;
+}
+
+.intro p {
+    font-size: 16px;
+}
+
+.intro .container div {
+    padding-top: 15%;
+}
+
+.intro .overlay {
+    background-color: rgba(3, 3, 3, .6);
+    height: 100%;
+}
+
+.intro #Intro {
+    text-align: center;
+}
+
+.navbar-brand,
+.head,
+.header {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#navbarToggleExternalContent a:hover {
+    color: lightcoral;
+}
+
+
+/* header */
+
+.head {
+    display: inline-block;
+}
+
+.header {
+    color: red;
+    display: inline-block;
+}
+
+.the-card {
+    margin: 10px auto;
+    min-height: 280px;
+    background-image: url(../images/pattern.png);
+    background-size: cover;
+    -webkit-background-blend-mode: difference;
+    -moz-background-blend-mode: difference;
+    -o-background-blend-mode: difference;
+    -ms-background-blend-mode: difference;
+    background-blend-mode: difference;
+}
+
+.the-card .card-header {
+    font-family: 'Courgette', cursive;
+    font-weight: bold;
+}
+
+.about {
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, .6), rgba(0, 0, 0, 0));
+    padding-top: 50px;
+}
+
+.about p {
+    line-height: 30px;
+}
+
+.about-btn {
+    margin-bottom: 50px;
+    margin-top: 20px;
+    border-radius: 0px;
+}
+
+
+/*end about sec*/
+
+
+/*//////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+/*starting magazine sec*/
+
+.magazine {
+    background: url(../images/magazine.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.magazine .overlay {
+    background: rgba(0, 0, 0, .9);
+    background: -webkit-linear-gradient(top, rgba(1, 1, 1, 1), rgba(0, 0, 0, .5));
+}
+
+.magazine-h {
+    font-size: 55px;
+    margin: 20px;
+    color: #dc3545;
+    text-shadow: 1px 1px 0 #fff;
+    font-family: 'Courgette', cursive;
+}
+
+.magazine-btn {
+    border-radius: 0px;
+    margin-bottom: 60px;
+    margin-top: 20px;
+}
+
+
+/*//////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.projects-photo {
+    background-image: url(../images/project3.jpg);
+    background-size: cover;
+    background-position: bottom;
+    /* to make the photo detalis appear in the background*/
+    background-attachment: fixed;
+}
+
+.projects-photo .overlay {
+    background-color: rgba(3, 3, 3, .75);
+    height: 100%;
+}
+
+.projects-photo .container {
+    font-family: sans-serif;
+    text-align: center;
+    padding: 50px 0;
+}
+
+.head-cont {
+    padding: 4% 0 2%;
+}
+
+.projects-icons .container {
+    padding: 50px 0;
+}
+
+.projects-photo .container h1 {
+    font-size: 40px;
+    color: #FFF;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-family: 'Courgette', cursive;
+}
+
+.projects-photo .container p {
+    color: #DDD;
+    width: 65%;
+    margin: 0 auto;
+    padding: 0 0 3%;
+}
+
+.projects-photo .container span
+/* this is the letter K */
+
+{
+    color: red;
+}
+
+
+/*Start Of Icons Section */
+
+.projects-icons .row {
+    margin-right: 0;
+}
+
+.projects-icons .item-box img {
+    display: block;
+    width: 90%;
+    border-radius: 50%;
+    margin: 10% auto;
+}
+
+.item-box button a {
+    text-decoration: none;
+    color: #343a40;
+}
+
+.item-box button:hover a {
+    color: #fff;
+}
+
+.projects-icons .item-box img:hover {
+    opacity: 0.8;
+}
+
+.projects-icons button {
+    cursor: pointer;
+    border-radius: 0;
+    max-width: 90%;
+    margin: auto;
+}
+
+
+/*End Of Icons Section */
+
+
+/*Start of EVENTS Section */
+
+.events-section {
+    background: #DDD;
+    text-align: center;
+    /*margin: 5% 0;*/
+    padding: 6% 0;
+}
+
+.events-section .container h1 {
+    display: inline-block;
+    font-weight: bold;
+    font-family: 'Courgette', cursive;
+}
+
+.events-section .container .k
+/* letter k */
+
+{
+    color: red;
+}
+
+.events-section .container p {
+    width: 70%;
+    margin: 0 auto;
+    padding: 4%;
+    color: #333;
+}
+
+.events-section .container button {
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.contact-us .overlay {
+    background-color: rgba(3, 3, 3, 0.7) !important;
+}
+
+.contact-us {
+    background: url("../images/contact-us.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0px;
+}
+
+.contact-us .container {
+    padding: 50px 0;
+}
+
+.contact-us .container .header {
+    width: 100%;
+    color: white;
+    text-align: center;
+    margin: auto;
+}
+
+.contact-us .container .header i {
+    color: #d70000;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.contact-us .header h2 {
+    font-family: 'Courgette', cursive;
+}
+
+.contact-us .container-fluid .contact-us .overlay .con .header {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.contact-us .form-control {
+    margin-bottom: 10px;
+    background-color: rgba(76, 76, 76, 0.7);
+    color: white;
+}
+
+.contact-us .input-form {
+    margin: 20px;
+}
+
+.contact-us .form-control:focus {
+    background-color: rgba(76, 76, 76, 0.6);
+    color: white;
+}
+
+.contact-us .form-group div textarea {
+    height: 85px;
+}
+
+.contact-us .form-group div button {
+    width: 100%;
+    background-color: #d70000;
+    border: 2px solid #d70000;
+    color: white;
+    margin-bottom: 40px;
+    transition: all 0.3s ease-in-out;
+}
+
+.contact-us .form-group div button:hover {
+    background-color: transparent;
+}
+
+a.nav-link {
+    cursor: pointer;
+}
+
+
+/* start footer */
+
+footer {
+    background-color: #222;
+    padding: 10px 0;
+    color: #fff;
+    font-size: 20px;
+}
+
+footer .copy-rights {
+    margin-bottom: 10px;
+}
+
+footer .social a {
+    color: #fff;
+    display: inline-block;
+    background: #ccc;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 10px;
+}
+
+footer .social a:first-child {
+    background-color: #3B5998;
+}
+
+footer .social a:nth-child(2) {
+    background-color: #1DA1F2;
+}
+
+footer .social a:nth-child(3) {
+    background-color: #B7177B;
+}
+
+
+/* end footer */

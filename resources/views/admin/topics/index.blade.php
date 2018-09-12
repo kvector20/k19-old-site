@@ -43,6 +43,7 @@ Topics
 	                  <th>Title</th>
 	                  <th>Headline</th>
 	                  <th>Writer</th>
+	                  <th>PDF Version</th>
 	                  <th>Views</th>
 	                  <th>Published</th>
 	                  <th>Controls</th>
@@ -59,10 +60,11 @@ Topics
 	                		<td>{{ $topic->title }}</td>
 	                		<td>{{ $topic->headline->name }}</td>
 	                		<td>{{ $topic->writer->name }}</td>
+	                		<td><a href="{{ $topic->pdf }}">{{ $topic->pdf }}</a></td>
 	                		<td>{{ $topic->views }}</td>
 	                		<td>
 								@if ($topic->publish !== null)
-									@can('topics.delete', Auth::user())
+									@can('topics.publish', Auth::user())
 			                			<a 
 											href="#" 
 											class="btn btn-success btn-xs"
@@ -77,7 +79,7 @@ Topics
 									    </form>
 									@endcan
 								@else
-									@can('topics.delete', Auth::user())
+									@can('topics.publish', Auth::user())
 			                			<a 
 											href="#" 
 											class="btn btn-danger btn-xs"
@@ -113,6 +115,11 @@ Topics
 								        {{ method_field('DELETE') }}
 								    </form>
 								@endcan
+								@can('topics.view', Auth::user())
+									<a href="{{ route('topics.show', $topic->id) }}" class="btn btn-primary btn-xs">
+										<i class="fa fa-file"></i>
+									</a>
+								@endcan
 	                		</td>
 	                		<td>{{ $topic->created_at->diffForHumans() }}</td>
 	                		<td>{{ $topic->updated_at->diffForHumans() }}</td>
@@ -127,6 +134,7 @@ Topics
 	                  <th>Title</th>
 	                  <th>Headline</th>
 	                  <th>Writer</th>
+	                  <th>PDF Version</th>
 	                  <th>Views</th>
 	                  <th>Published</th>
 	                  <th>Controls</th>

@@ -11,23 +11,27 @@
 |
 */
 
-Route::get('/', function () {
-    return view('user.index');
-});
+// Route::get('/', function () {
+//     return view('user.index');
+// });
 
-Route::get('/about', function () {
-    return view('about.about');
-});
+// Route::get('/about', function () {
+//     return view('user.about.about');
+// });
 
-Route::get('/game', function () {
-    return view('game.game');
-});
+// Route::get('/game', function () {
+//     return view('game.game');
+// });
 
 
 
 
 // Auth::routes();
 Route::group(['namespace' => 'User'], function() {
+	Route::get('/', 'HomeController@index');
+	Route::get('/about', 'HomeController@about');
+
+
 	Route::get('/projects/academic', 'projectsController@academic')->name('projects.academic');
 	Route::get('/projects/magazine', 'projectsController@magazine')->name('projects.magazine');
 	Route::get('/projects/juniors', 'projectsController@juniors')->name('projects.juniors');
