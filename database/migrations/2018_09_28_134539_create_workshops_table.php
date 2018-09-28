@@ -17,6 +17,9 @@ class CreateWorkshopsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('type');
+            $table->string('color')->nullable();
+            $table->string('image')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

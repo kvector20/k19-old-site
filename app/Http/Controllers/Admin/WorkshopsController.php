@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Workshop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class WorkshopsController extends Controller
 {
@@ -52,10 +53,17 @@ class WorkshopsController extends Controller
             $this->validate($request, [
                 'name' => 'required|string',
                 'type' => 'required|string',
+                'color' => 'required|string',
+                'image' => 'required|image',
+                'description' => 'required|string',
             ]);
             $workshop = new Workshop;
             $workshop->name = $request->name;
             $workshop->type = $request->type;
+            $workshop->color = $request->color;
+            $filePath = $request->image->store('/public/workshops');
+            $workshop->image = $filePath;
+            $workshop->description = $request->description;
             $workshop->save();
             return back()->with('Added Successfully!!');
         }
@@ -70,7 +78,7 @@ class WorkshopsController extends Controller
      */
     public function show($id)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -79,9 +87,12 @@ class WorkshopsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Workshop $workshop)
     {
-        //
+        if (Auth::user()->can('workshops.update')) {
+            return view('admin.workshops.edit', compact('workshop'));
+        }
+        abort(404);
     }
 
     /**
@@ -91,9 +102,30 @@ class WorkshopsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Workshop $workshop)
     {
-        //
+        if (Auth::user()->can('workshops.update')) {
+            $this->validate($request, [
+                'name' => 'required|string',
+                'type' => 'required|string',
+                'color' => 'required|string',
+                'description' => 'required|string',
+            ]);
+            $workshop->name = $request->name;
+            $workshop->type = $request->type;
+            $workshop->color = $request->color;
+            if ($request->hasFile('image')) {
+                if ($workshop->image) {
+                    Storage::delete([$workshop->image]);
+                }
+                $filePath = $request->image->store('/public/workshops');
+                $workshop->image = $filePath;
+            }
+            $workshop->description = $request->description;
+            $workshop->save();
+            return redirect('admin/workshops')->with('Updated Successfully!!');
+        }
+        abort(404);
     }
 
     /**

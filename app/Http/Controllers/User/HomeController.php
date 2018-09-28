@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\User;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Workshop;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -19,6 +20,7 @@ class HomeController extends Controller
 
     public function workshops()
     {
-    	return view('user.about.workshops');
+        $workshops = Workshop::where('type', 'academic')->orWhere('type', 'automotive')->get();
+    	return view('user.about.workshops', compact('workshops'));
     }
 }

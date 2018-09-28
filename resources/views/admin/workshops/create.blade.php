@@ -5,6 +5,7 @@ New Workshop
 @endsection
 
 @section('head')
+<link rel="stylesheet" href="{{ asset('/admin_style/css/froala/froala_editor.css') }}">
 @endsection
 
 @section('content')
@@ -42,7 +43,7 @@ New Workshop
                       </div>
                   @endif
 
-                <form class="form-horizontal" action="{{ route('workshops.store') }}" method="POST">
+                <form class="form-horizontal" action="{{ route('workshops.store') }}" method="POST" enctype="multipart/form-data">
                 	{{ csrf_field() }}
                   <div class="form-group">
                     <label for="inputName" class="col-sm-3 control-label">Name</label>
@@ -57,6 +58,30 @@ New Workshop
 
                     <div class="col-sm-9">
                       <input type="text" class="form-control datepicker" id="datepicker" placeholder="Type" required name="type" value="{{ old('type') }}">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inputEmail" class="col-sm-3 control-label">Color</label>
+
+                    <div class="col-sm-9">
+                      <input type="color" class="form-control datepicker" id="datepicker" placeholder="Color" required name="color" value="{{ old('color') }}">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inputEmail" class="col-sm-3 control-label">Icon</label>
+
+                    <div class="col-sm-9">
+                      <input type="file" accept="image/*" class="form-control datepicker" id="datepicker" placeholder="Icon" required name="image">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inputEmail" class="col-sm-3 control-label">Description</label>
+
+                    <div class="col-sm-9">
+                      <textarea class="bodyTextarea" placeholder="Description" required name="description">{{ old('description') }}</textarea>
                     </div>
                   </div>
 
@@ -79,5 +104,12 @@ New Workshop
 @endsection
 
 @section('footer')
-
+<script type="text/javascript" src="{{ asset('/admin_style/js/froala/froala_editor.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/admin_style/js/froala/plugins/lists.min.js') }}"></script>
+<script>
+  $(function() {
+    $('.bodyTextarea')
+      .froalaEditor({enter: $.FroalaEditor.ENTER_P, placeholderText: "Write something..."})
+  })
+</script>
 @endsection
