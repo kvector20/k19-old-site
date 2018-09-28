@@ -73,6 +73,7 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::post('admin/topics/{topic}/publish', 'TopicsController@publish')->name('topics.publish');
 	Route::resource('admin/events', 'EventsController');
 	Route::resource('admin/workshops', 'WorkshopsController');
+	Route::GET('admin/participants19', 'Participants19Controller@index')->name('participants19.index');
 });
 
 

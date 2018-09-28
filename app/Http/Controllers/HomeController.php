@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Participants19;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $participants_count = Participants19::all()->count();
+        // return $participants;
+        return view('admin.home', compact('participants_count'));
     }
 }

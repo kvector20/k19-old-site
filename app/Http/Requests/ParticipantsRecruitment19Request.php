@@ -26,7 +26,7 @@ class ParticipantsRecruitment19Request extends FormRequest
         return [
             'name' => 'required|string|min:2',
             'email' => 'required|email|unique:participants19s',
-            'phone' => 'required|integer|max:99999999999',
+            'phone' => 'required|string|max:11',
             'facebook_link' => 'required|url',
             'university' => 'required|string|min:2',
             'faculty' => 'required|string|min:2',
