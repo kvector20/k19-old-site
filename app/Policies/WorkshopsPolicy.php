@@ -3,7 +3,6 @@
 namespace App\Policies;
 
 use App\User;
-use App\Workshop;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class WorkshopsPolicy
@@ -17,10 +16,10 @@ class WorkshopsPolicy
      * @param  \App\Workshop  $workshop
      * @return mixed
      */
-    public function view(User $user, Workshop $workshop)
+    public function view(User $user)
     {
         foreach ($user->position->permissions as $permission) {
-            if ($permission->type === 'admins.view') {
+            if ($permission->type === 'workshops.view') {
                 return true;
             }
         }
@@ -35,7 +34,12 @@ class WorkshopsPolicy
      */
     public function create(User $user)
     {
-        //
+        foreach ($user->position->permissions as $permission) {
+            if ($permission->type === 'workshops.create') {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -45,9 +49,14 @@ class WorkshopsPolicy
      * @param  \App\Workshop  $workshop
      * @return mixed
      */
-    public function update(User $user, Workshop $workshop)
+    public function update(User $user)
     {
-        //
+        foreach ($user->position->permissions as $permission) {
+            if ($permission->type === 'workshops.update') {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -57,9 +66,14 @@ class WorkshopsPolicy
      * @param  \App\Workshop  $workshop
      * @return mixed
      */
-    public function delete(User $user, Workshop $workshop)
+    public function delete(User $user)
     {
-        //
+        foreach ($user->position->permissions as $permission) {
+            if ($permission->type === 'workshops.delete') {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -69,7 +83,7 @@ class WorkshopsPolicy
      * @param  \App\Workshop  $workshop
      * @return mixed
      */
-    public function restore(User $user, Workshop $workshop)
+    public function restore(User $user)
     {
         //
     }
@@ -81,7 +95,7 @@ class WorkshopsPolicy
      * @param  \App\Workshop  $workshop
      * @return mixed
      */
-    public function forceDelete(User $user, Workshop $workshop)
+    public function forceDelete(User $user)
     {
         //
     }

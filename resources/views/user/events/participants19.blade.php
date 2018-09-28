@@ -11,13 +11,13 @@ K'19 Participants Recruitment
 @section('body')
 <div class="container pt-5">
 	<div class="row align-items-center 
-		@if (Carbon\Carbon::now() > $event->start_date)
+		@if (Carbon\Carbon::now() < $event->start_date)
 		full
 		@else
 		pb-5
 		@endif
 		">
-		@if (Carbon\Carbon::now() > $event->start_date)
+		@if (Carbon\Carbon::now() < $event->start_date)
 			<div class="col-12 col-md-8 text-center ml-auto mr-auto">
 				<h1 style="font-family: 'Courgette', cursive;">K'19 Participants Recruitment Starts in</h1>
 				<br>
@@ -74,13 +74,24 @@ K'19 Participants Recruitment
 					<label for="">First Preference</label>
 					<select name="first" required class="form-control" id="">
 						<option value="">Choose your first preference workshop</option>
-						@foreach ($workshops as $workshop)
-							<option
-							@if ($workshop->id == old('first'))
-								selected
-							@endif
-							value="{{ $workshop->id }}">{{ $workshop->name }}</option>
-						@endforeach
+						<optgroup label="Academic">
+							@foreach ($academic as $workshop)
+								<option
+								@if ($workshop->id == old('first'))
+									selected
+								@endif
+								value="{{ $workshop->id }}">{{ $workshop->name }}</option>
+							@endforeach
+						</optgroup>
+						<optgroup label="Automotive">
+							@foreach ($automotive as $workshop)
+								<option
+								@if ($workshop->id == old('first'))
+									selected
+								@endif
+								value="{{ $workshop->id }}">{{ $workshop->name }}</option>
+							@endforeach
+						</optgroup>
 					</select>
 				</div>
 				<div class="form-group">
@@ -91,13 +102,24 @@ K'19 Participants Recruitment
 					<label for="">Second Preference</label>
 					<select name="second" required class="form-control" id="">
 						<option value="">Choose your second preference workshop</option>
-						@foreach ($workshops as $workshop)
-							<option
-							@if ($workshop->id == old('second'))
-								selected
-							@endif
-							value="{{ $workshop->id }}">{{ $workshop->name }}</option>
-						@endforeach
+						<optgroup label="Academic">
+							@foreach ($academic as $workshop)
+								<option
+								@if ($workshop->id == old('second'))
+									selected
+								@endif
+								value="{{ $workshop->id }}">{{ $workshop->name }}</option>
+							@endforeach
+						</optgroup>
+						<optgroup label="Automotive">
+							@foreach ($automotive as $workshop)
+								<option
+								@if ($workshop->id == old('second'))
+									selected
+								@endif
+								value="{{ $workshop->id }}">{{ $workshop->name }}</option>
+							@endforeach
+						</optgroup>
 					</select>
 				</div>
 				<div class="blockquote-footer">
@@ -108,6 +130,11 @@ K'19 Participants Recruitment
 			    <div class="blockquote-footer">
 			        <small>
 			          	You can also contact us and leave your feedback <a href="{{ route('contact') }}">contact us</a>.
+			        </small>
+			    </div>
+			    <div class="blockquote-footer">
+			        <small>
+			          	To get more information about workshops <a href="{{ route('about.workshops') }}">Click Here</a>.
 			        </small>
 			    </div>
 			    <div class="blockquote-footer">

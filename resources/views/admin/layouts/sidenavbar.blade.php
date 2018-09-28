@@ -52,6 +52,40 @@
           </li>
         @endcan
 
+        @can('workshops.view', Auth::user())
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-graduation-cap"></i> <span>Workshops</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('workshops.index') }}"><i class="fa text-red fa-circle-o"></i> View</a></li>
+              @can('workshops.create', Auth::user())
+                <li><a href="{{ route('workshops.create') }}"><i class="fa text-purple fa-circle-o"></i> New</a></li>
+              @endcan
+            </ul>
+          </li>
+        @endcan
+
+        @can('events.view', Auth::user())
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-calendar"></i> <span>Events</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('events.index') }}"><i class="fa text-red fa-circle-o"></i> View</a></li>
+              @can('events.create', Auth::user())
+                <li><a href="{{ route('events.create') }}"><i class="fa text-purple fa-circle-o"></i> New</a></li>
+              @endcan
+            </ul>
+          </li>
+        @endcan
+
         @can('admins.view', Auth::user())
           <li class="treeview">
             <a href="#">

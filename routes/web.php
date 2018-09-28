@@ -16,6 +16,7 @@ Route::group(['namespace' => 'User'], function() {
 	Route::get('/', 'HomeController@index');
 	Route::get('/about', 'HomeController@about');
 
+	Route::get('/about/workshops', 'HomeController@workshops')->name('about.workshops');
 
 	Route::get('/projects/academic', 'projectsController@academic')->name('projects.academic');
 	Route::get('/projects/magazine', 'projectsController@magazine')->name('projects.magazine');
@@ -71,6 +72,7 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::resource('admin/topics', 'TopicsController');
 	Route::post('admin/topics/{topic}/publish', 'TopicsController@publish')->name('topics.publish');
 	Route::resource('admin/events', 'EventsController');
+	Route::resource('admin/workshops', 'WorkshopsController');
 });
 
 

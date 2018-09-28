@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Workshop;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WorkshopsController extends Controller
 {
@@ -19,7 +21,7 @@ class WorkshopsController extends Controller
     public function index()
     {
         if (Auth::user()->can('workshops.view')) {
-            $workshops = Event::all();
+            $workshops = Workshop::all();
             return view('admin.workshops.index', compact('workshops'));
         }
         abort(404);
@@ -32,7 +34,10 @@ class WorkshopsController extends Controller
      */
     public function create()
     {
-        //
+        if (Auth::user()->can('workshops.create')) {
+            return view('admin.workshops.create');
+        }
+        abort(404);
     }
 
     /**
@@ -43,7 +48,18 @@ class WorkshopsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (Auth::user()->can('events.create')) {
+            $this->validate($request, [
+                'name' => 'required|string',
+                'type' => 'required|string',
+            ]);
+            $workshop = new Workshop;
+            $workshop->name = $request->name;
+            $workshop->type = $request->type;
+            $workshop->save();
+            return back()->with('Added Successfully!!');
+        }
+        abort(404);
     }
 
     /**

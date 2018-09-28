@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ParticipantsRecruitment19Request;
 use App\Models\Event;
+use App\Models\Participants19;
 use App\Models\Workshop;
 use Illuminate\Http\Request;
 
@@ -31,13 +33,15 @@ class eventsConteroller extends Controller
 
     public function participants19()
     {
-        $workshops = Workshop::where('type', 'academic')->get();
+        $academic = Workshop::where('type', 'academic')->get();
+        $automotive = Workshop::where('type', 'automotive')->get();
         $event = Event::where('title', 'K\'19 Participants Recruitment')->first();
-        return view('user.events.participants19', compact('workshops', 'event'));
+        return view('user.events.participants19', compact('academic', 'automotive', 'event'));
     }
 
-    public function participants19Store(Request $request)
+    public function participants19Store(ParticipantsRecruitment19Request $request)
     {
-        return $request->all();
+        $participant = Participants19::create($request->all());
+        return redirect()->route('about.workshops');
     }
 }

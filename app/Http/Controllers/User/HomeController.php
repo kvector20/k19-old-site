@@ -16,4 +16,9 @@ class HomeController extends Controller
     {
     	return view('user.about.about');
     }
+
+    public function workshops()
+    {
+    	return view('user.about.workshops');
+    }
 }
