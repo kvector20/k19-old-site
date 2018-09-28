@@ -109,7 +109,7 @@
 	                    <p>
 	                        k vector foundation is honored to organize events that provide our events' attendees with the latest updates in all fields that help our vision to create a pioneering generation.
 	                    </p>
-	                    <a href="" class="btn btn-outline-danger">See Our Events</a>
+	                    <a href="{{ route('events.participants19') }}" class="btn btn-outline-danger">See Our Events</a>
 	                </div>
 	                
 	            </div>

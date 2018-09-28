@@ -5,7 +5,7 @@
 @endsection
 
 @section('head')
-	<link rel="stylesheet" href="{{ asset('/css/events/events.css') }}">
+	<link rel="stylesheet" href="{{ asset('/user_style/css/events/events.css') }}">
 @endsection
 
 @section('body')
@@ -83,5 +83,5 @@
 @endsection
 
 @section('footer')
-	<script src="{{ asset('/js/events/events.js') }}"></script>
+	<script src="{{ asset('/user_style/js/events/events.js') }}"></script>
 @endsection

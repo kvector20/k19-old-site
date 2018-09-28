@@ -61,7 +61,7 @@ class RolesController extends Controller
             $role->committee = $request->committee;
             $role->save();
             $role->permissions()->sync($request->permission);
-            return redirect('admin/roles')->with(['status' => 'Added Successfully!!']);
+            return back()->with(['status' => 'Added Successfully!!']);
         }
         abort(404);
     }

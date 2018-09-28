@@ -43,7 +43,7 @@ New role
                     <label for="inputName" class="col-sm-3 control-label">Position</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="inputPosition" placeholder="Position" required name="position" value="{{ old('position') }}">
+                      <input type="text" class="form-control" autofocus id="inputPosition" placeholder="Position" required name="position" value="{{ old('position') }}">
                     </div>
                   </div>
 

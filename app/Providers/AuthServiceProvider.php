@@ -31,5 +31,6 @@ class AuthServiceProvider extends ServiceProvider
         Gate::resource('headlines', 'App\Policies\HeadlinesPolicy');
         Gate::resource('topics', 'App\Policies\TopicsPolicy');
         Gate::define('topics.publish', 'App\Policies\TopicsPolicy@publish');
+        Gate::resource('events', 'App\Policies\EventsPolicy');
     }
 }

@@ -26,7 +26,7 @@
             <div class="box-body box-profile">
               <img class="profile-user-img img-responsive img-circle" src="
               @if (Auth::user()->image == '')
-				{{ asset('/images/team2.jpg') }}
+				{{ asset('/admin_style/images/avatar.jpg') }}
 				@else
 				{{ App\Helpers\Helpers::storage(Auth::user()->image) }}
               @endif" alt="User profile picture">

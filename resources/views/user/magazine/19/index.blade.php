@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="block">
-                    <h2 style="font-family: 'Aref Ruqaa', cursive; font-size: 60px">أرْكَانْ</h2>
+                    <img src="{{ asset('/user_style/images/magazine/Rectangle Arkan.png') }}" style="width: 150px;" alt="">
                     @if (Route::current()->getName() == 'k19.magazine.month')
                     	<h2 style="font-family: 'Aref Ruqaa', cursive;">شهر {{ $dt->locale('ar')->monthName }}</h2>
                     @elseif (Route::current()->getName() == 'k19.magazine.headline')

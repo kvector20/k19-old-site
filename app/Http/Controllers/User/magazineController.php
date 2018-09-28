@@ -69,7 +69,7 @@ class magazineController extends Controller
         $comment = new mComment;
         $comment->name = $request->name;
         $comment->email = $request->email;
-        $comment->body = $request->comment;
+        $comment->body = nl2br($request->comment, false);
         $comment->topic_id = $topic->id;
         $comment->save();
         return back();

@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-New Admin
+Edit Admin
 @endsection
 
 @section('head')
@@ -15,7 +15,7 @@ New Admin
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Admins
+        Edit {{ $admin->name }}
       </h1>
     </section>
 	<section class="content">
@@ -23,7 +23,7 @@ New Admin
 	        <div class="col-xs-12">
     			<div class="box">
 	            <div class="box-header">
-	              <h3 class="box-title">Add new Admin</h3>
+	              <h3 class="box-title">Edit Admin</h3>
 	            </div>
 	            <!-- /.box-header -->
 	            <div class="box-body">
@@ -31,25 +31,20 @@ New Admin
         					<div class="alert alert-danger col-sm-9 col-sm-offset-3">{{ $error }}</div>
         				@endforeach
 
-            		@if (session('error'))
-            		    <div class="alert alert-danger col-sm-9 col-sm-offset-3">
-            		        {{ session('error') }}
-            		    </div>
-            		@endif
+				@if (session('error'))
+				    <div class="alert alert-danger col-sm-9 col-sm-offset-3">
+				        {{ session('error') }}
+				    </div>
+				@endif
 
-                @if (session('status'))
-                      <div class="alert alert-success">
-                          {{ session('status') }}
-                      </div>
-                  @endif
-
-                <form class="form-horizontal" action="{{ route('admins.store') }}" method="POST">
+                <form class="form-horizontal" action="{{ route('admins.update', $admin->id) }}" method="POST">
                 	{{ csrf_field() }}
+                  {{ method_field('PUT') }}
                   <div class="form-group">
                     <label for="inputName" class="col-sm-3 control-label">Name</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" autofocus id="inputName" placeholder="Name" required name="name" value="{{ old('name') }}">
+                      <input type="text" class="form-control" id="inputName" placeholder="Name" required name="name" value="{{ $admin->name or old('name') }}">
                     </div>
                   </div>
 
@@ -57,7 +52,7 @@ New Admin
                     <label for="inputEmail" class="col-sm-3 control-label">Email</label>
 
                     <div class="col-sm-9">
-                      <input type="email" class="form-control" id="inputEmail" placeholder="Email" required name="email" value="{{ old('email') }}">
+                      <input type="email" class="form-control" id="inputEmail" placeholder="Email" required name="email" value="{{ $admin->email or old('email') }}">
                     </div>
                   </div>
 
@@ -68,28 +63,15 @@ New Admin
                       <select name="role" class="form-control select2" required style="width: 100%;">
                         <option value="">Choose role</option>
                         @foreach ($roles as $role)
-                          <option value="{{ $role->id }}">{{ $role->position }} {{ $role->committee }}</option>
+                          @if ($admin->role == $role->id)
+                            <option selected value="{{ $role->id }}">{{ $role->position }} {{ $role->committee }}</option>
+                          @else
+                            <option value="{{ $role->id }}">{{ $role->position }} {{ $role->committee }}</option>
+                          @endif
                         @endforeach
                       </select>
                     </div>
                   </div>
-
-                  <div class="form-group">
-                    <label for="inputSkills" class="col-sm-3 control-label">Password</label>
-
-                    <div class="col-sm-9">
-                      <input type="password" class="form-control" id="inputSkills" placeholder="Password" required name="password">
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="inputPassword" class="col-sm-3 control-label">Confirm Password</label>
-
-                    <div class="col-sm-9">
-                      <input type="password" class="form-control" id="inputPassword" placeholder="Confirm Password" required  name="password_confirmation">
-                    </div>
-                  </div>
-
                   <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-9">
                       <button type="submit" class="btn bg-red">Submit</button>

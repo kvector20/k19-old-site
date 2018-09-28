@@ -5,7 +5,7 @@
 @endsection
 
 @section('head')
-	<link rel="stylesheet" href="{{ asset('/css/about/about.css') }}">
+	<link rel="stylesheet" href="{{ asset('/user_style/css/about/about.css') }}">
 @endsection
 
 @section('body')
@@ -111,6 +111,6 @@
 @endsection
 
 @section('footer')
-	<script src="{{ asset('/js/about/about.js') }}"></script>
+	<script src="{{ asset('/user_style/js/about/about.js') }}"></script>
 
 @endsection

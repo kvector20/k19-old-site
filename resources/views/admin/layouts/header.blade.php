@@ -23,7 +23,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="@if (Auth::user()->image == '')
-        {{ asset('/images/team2.jpg') }}
+        {{ asset('/admin_style/images/avatar.jpg') }}
         @else
         {{ App\Helpers\Helpers::storage(Auth::user()->image) }}
               @endif" class="user-image" alt="User Image">
@@ -33,7 +33,7 @@
               <!-- User image -->
               <li class="user-header">
                 <img src="@if (Auth::user()->image == '')
-        {{ asset('/images/team2.jpg') }}
+        {{ asset('/admin_style/images/avatar.jpg') }}
         @else
         {{ App\Helpers\Helpers::storage(Auth::user()->image) }}
               @endif" class="img-circle" alt="User Image">

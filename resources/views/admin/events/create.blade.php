@@ -1,11 +1,14 @@
 @extends('admin.layouts.app')
 
 @section('title')
-New Admin
+New Event
 @endsection
 
 @section('head')
-  <link rel="stylesheet" href="{{ asset('/admin_style/js/select2/select2.min.css') }}">
+  <!-- Bootstrap time Picker -->
+  <link rel="stylesheet" href="{{ asset('/admin_style/css/timepicker/bootstrap-timepicker.min.css') }}">
+    <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="{{ asset('/admin_style/css/datepicker/datepicker3.css') }}">
 @endsection
 
 @section('content')
@@ -15,7 +18,7 @@ New Admin
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Admins
+        Events
       </h1>
     </section>
 	<section class="content">
@@ -23,7 +26,7 @@ New Admin
 	        <div class="col-xs-12">
     			<div class="box">
 	            <div class="box-header">
-	              <h3 class="box-title">Add new Admin</h3>
+	              <h3 class="box-title">Add new Event</h3>
 	            </div>
 	            <!-- /.box-header -->
 	            <div class="box-body">
@@ -43,50 +46,45 @@ New Admin
                       </div>
                   @endif
 
-                <form class="form-horizontal" action="{{ route('admins.store') }}" method="POST">
+                <form class="form-horizontal" action="{{ route('events.store') }}" method="POST">
                 	{{ csrf_field() }}
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-3 control-label">Name</label>
+                    <label for="inputName" class="col-sm-3 control-label">Title</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" autofocus id="inputName" placeholder="Name" required name="name" value="{{ old('name') }}">
+                      <input type="text" class="form-control" autofocus id="inputName" placeholder="Title" required name="title" value="{{ old('title') }}">
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label for="inputEmail" class="col-sm-3 control-label">Email</label>
+                    <label for="inputEmail" class="col-sm-3 control-label">Start date</label>
 
                     <div class="col-sm-9">
-                      <input type="email" class="form-control" id="inputEmail" placeholder="Email" required name="email" value="{{ old('email') }}">
+                      <input type="text" class="form-control datepicker" id="datepicker" placeholder="Start date" required name="start_date" value="{{ old('start_date') }}">
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label for="inputMobile" class="col-sm-3 control-label">Role</label>
+                    <label for="inputEmail" class="col-sm-3 control-label">End date</label>
 
                     <div class="col-sm-9">
-                      <select name="role" class="form-control select2" required style="width: 100%;">
-                        <option value="">Choose role</option>
-                        @foreach ($roles as $role)
-                          <option value="{{ $role->id }}">{{ $role->position }} {{ $role->committee }}</option>
-                        @endforeach
-                      </select>
+                      <input type="text" class="form-control datepicker" id="inputEmail" placeholder="End date" required name="end_date" value="{{ old('end_date') }}">
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label for="inputSkills" class="col-sm-3 control-label">Password</label>
+                    <label for="inputEmail" class="col-sm-3 control-label">Start time</label>
 
                     <div class="col-sm-9">
-                      <input type="password" class="form-control" id="inputSkills" placeholder="Password" required name="password">
+                      <input type="text" class="form-control timepicker" placeholder="Start time" required name="start_time" value="{{ old('start_time') }}">
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label for="inputPassword" class="col-sm-3 control-label">Confirm Password</label>
+                    <label for="inputEmail" class="col-sm-3 control-label">End time</label>
 
                     <div class="col-sm-9">
-                      <input type="password" class="form-control" id="inputPassword" placeholder="Confirm Password" required  name="password_confirmation">
+                      <input type="text" class="form-control timepicker" id="inputEmail" placeholder="End time" required name="end_time" value="{{ old('end_time') }}">
                     </div>
                   </div>
 
@@ -109,11 +107,20 @@ New Admin
 @endsection
 
 @section('footer')
-  <script src="{{ asset('admin_style/js/select2/select2.full.min.js') }}"></script>
-  <script>
-    $(function () {
-      //Initialize Select2 Elements
-      $(".select2").select2();
+<!-- bootstrap time picker -->
+<script src="{{ asset('admin_style/js/timepicker/bootstrap-timepicker.min.js') }}"></script>
+<!-- bootstrap datepicker -->
+<script src="{{ asset('admin_style/js/datepicker/bootstrap-datepicker.js') }}"></script>
+<script>
+  $(function() {
+    //Date picker
+    $('.datepicker').datepicker({
+      autoclose: true
     });
-  </script>
+    //Timepicker
+    $(".timepicker").timepicker({
+      showInputs: false
+    });
+  })
+</script>
 @endsection
