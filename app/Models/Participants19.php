@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Workshop;
 use Illuminate\Database\Eloquent\Model;
 
 class Participants19 extends Model
@@ -19,4 +20,9 @@ class Participants19 extends Model
         'second',
         'why_first',
     ];
+
+    public function firstPreference()
+    {
+        return $this->belongsTo(Workshop::class, 'first');
+    }
 }
