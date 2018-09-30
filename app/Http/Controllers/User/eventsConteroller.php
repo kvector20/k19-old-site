@@ -42,6 +42,6 @@ class eventsConteroller extends Controller
     public function participants19Store(ParticipantsRecruitment19Request $request)
     {
         $participant = Participants19::create($request->all());
-        return redirect()->route('about.workshops');
+        return redirect()->route('about.workshops')->with(['status' => 'You are registered successfully!!']);
     }
 }

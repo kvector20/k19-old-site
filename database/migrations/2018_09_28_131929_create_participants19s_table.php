@@ -26,6 +26,8 @@ class CreateParticipants19sTable extends Migration
             $table->string('first');
             $table->string('why_first');
             $table->string('second');
+            $table->string('iq_test_day')->nullable();
+            $table->string('iq_test_hour')->nullable();
             $table->timestamps();
         });
     }

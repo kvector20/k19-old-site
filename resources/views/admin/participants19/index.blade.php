@@ -48,8 +48,9 @@ Participants
 	                  <th>First Preference</th>
 	                  <th>Why first preference</th>
 	                  <th>second Preference</th>
+	                  <th>IQ Test Day</th>
+	                  <th>IQ Test Hour</th>
 	                  <th>Added From</th>
-	                  <th>Updated From</th>
 	                </tr>
 	                </thead>
 
@@ -69,8 +70,9 @@ Participants
 	                		<td>{{ App\Models\Workshop::find($participant->first)->name }}</td>
 	                		<td>{!! $participant->why_first !!}</td>
 	                		<td>{{ App\Models\Workshop::find($participant->second)->name }}</td>
+	                		<td>{{ $participant->iq_test_day }}</td>
+	                		<td>{{ $participant->iq_test_hour }}</td>
 	                		<td>{{ $participant->created_at->diffForHumans() }}</td>
-	                		<td>{{ $participant->updated_at->diffForHumans() }}</td>
 	                	</tr>
 	                @endforeach
 
@@ -90,8 +92,9 @@ Participants
 	                  <th>First Preference</th>
 	                  <th>Why first preference</th>
 	                  <th>second Preference</th>
+	                  <th>IQ Test Day</th>
+	                  <th>IQ Test Hour</th>
 	                  <th>Added From</th>
-	                  <th>Updated From</th>
 	                </tr>
 	                </tfoot>
 	              </table>

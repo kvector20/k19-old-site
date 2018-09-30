@@ -122,7 +122,68 @@ K'19 Participants Recruitment
 						</optgroup>
 					</select>
 				</div>
+
+				@php
+					$days = array(
+						'THU 02/10',
+						'FRI 03/10',
+						'SAT 04/10',
+						'SUN 05/10',
+						'MON 06/10',
+						'TUE 07/10',
+						'WED 08/10',
+					);
+					$hours = array(
+						'4:00 PM',
+						'4:30 PM',
+						'5:00 PM',
+						'5:30 PM',
+						'6:00 PM',
+						'6:30 PM',
+					);
+				@endphp
+
+				<div class="form-group">
+					<label for="">IQ Test</label>
+					<div class="row">
+						<div class="col-md-6 mt-3">
+							<select name="iq_test_day" required class="form-control" id="">
+								<option value="">Choose your IQ Test Day</option>
+								@foreach ($days as $day)
+									<option
+									@if ($day == old('iq_test_day'))
+										selected
+									@endif
+									value="{{ $day }}">{{ $day }}</option>
+								@endforeach
+							</select>
+						</div>
+						<div class="col-md-6 mt-3">
+							<select name="iq_test_hour" required class="form-control" id="">
+								<option value="">Choose your IQ Test Hour</option>
+								@foreach ($hours as $hour)
+									<option
+									@if ($hour == old('iq_test_hour'))
+										selected
+									@endif
+									value="{{ $hour }}">{{ $hour }}</option>
+								@endforeach
+							</select>
+						</div>
+					</div>
+				</div>
+
 				<div class="blockquote-footer">
+			        <small>
+			          	Note That IQ test is half an hour in max.
+			        </small>
+			    </div>
+			    <div class="blockquote-footer">
+			        <small>
+			          	The location of the IQ Test is سنتر ديوان في الدقي خلف شاورما الريم.
+			        </small>
+			    </div>
+			    <div class="blockquote-footer">
 			        <small>
 			          	For any questions go for <a href="https://www.facebook.com/kvectorfoundation/">our page</a> and ask us.
 			        </small>

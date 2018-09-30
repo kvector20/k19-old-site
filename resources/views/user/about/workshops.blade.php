@@ -11,6 +11,11 @@ K'19 Workshops
 @section('body')
 <div class="container pt-5 pb-5">
 	<h1 class="text-center" style="font-family: 'Courgette', cursive;"><span class="text-danger">K</span>'19 Workshops</h1>
+	@if (session('status'))
+	    <div class="alert alert-success">
+	        {{ session('status') }}
+	    </div>
+	@endif
 	<div id="accordion">
 		@foreach ($workshops as $workshop)
 		  <div class="card">

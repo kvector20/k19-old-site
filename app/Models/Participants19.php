@@ -19,6 +19,8 @@ class Participants19 extends Model
         'first',
         'second',
         'why_first',
+        'iq_test_day',
+        'iq_test_hour',
     ];
 
     public function firstPreference()
