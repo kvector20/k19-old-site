@@ -44,4 +44,11 @@ class eventsConteroller extends Controller
         $participant = Participants19::create($request->all());
         return redirect()->route('about.workshops')->with(['status' => 'You are registered successfully!!']);
     }
+
+    public function bullsEye19()
+    {
+        $event = Event::where('title', 'Bulls Eye')->first();
+        return view('user.events.bullsEye19', compact('event'));
+    }
+
 }
