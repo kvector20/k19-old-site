@@ -27,7 +27,7 @@ Global Page Section Start
                     <h2 style="font-family: 'Aref Ruqaa', serif; font-size: 60px">{{ $topic->title }}</h2>
                     <div class="portfolio-meta">
                         <span>{{ Carbon\Carbon::parse($topic->publish)->toDateString() }}</span>|
-                        <span> Headline: {{ $topic->headline->name }}</span>
+                        <span> ركن: {{ $topic->headline->name }}</span>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@ Global Page Section Start
                 <div class="post-img">
                     <img class="img-fluid" alt="{{ $topic->title }}" src="{{ App\Helpers\Helpers::storage($topic->image) }}">
                 </div>
-                <div class="post-content">
+                <div class="post-content text-right" style="direction: rtl;">
                     {!! $topic->body !!}
                 </div>
             </div>

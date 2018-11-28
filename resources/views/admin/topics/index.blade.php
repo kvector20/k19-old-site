@@ -21,7 +21,7 @@ Topics
     </section>
 	<section class="content">
 	      <div class="row">
-	        <div class="col-xs-12">
+	        <div class="col-xs-12" style="overflow-x: scroll;">
     			<div class="box">
 	            <div class="box-header">
 	              <h3 class="box-title">Topics Table</h3>
@@ -172,6 +172,7 @@ Topics
       "info": true,
       "autoWidth": false
     });
+    $('#example1').parent('div').css('overflow-x', 'scroll');
   });
 </script>
 

@@ -56,6 +56,14 @@ Edit Topic
                   </div>
 
                   <div class="form-group">
+                    <label for="inputName" class="col-sm-3 control-label">Image (optional)</label>
+
+                    <div class="col-sm-9">
+                      <input type="file" class="form-control" id="inputName" placeholder="image" name="image" value="{{ old('image') }}" accept="image/*">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
                     <label for="inputName" class="col-sm-3 control-label">Headline</label>
 
                     <div class="col-sm-9">

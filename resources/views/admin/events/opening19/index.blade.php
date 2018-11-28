@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-Participants
+Opening 19 Participants
 @endsection
 
 @section('head')
@@ -16,7 +16,7 @@ Participants
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Participants
+        Opening 19 Participants
       </h1>
     </section>
 	<section class="content">
@@ -45,11 +45,6 @@ Participants
 	                  <th>Faculty</th>
 	                  <th>Department</th>
 	                  <th>Academic Year</th>
-	                  <th>First Preference</th>
-	                  <th>Why first preference</th>
-	                  <th>second Preference</th>
-	                  <th>IQ Test Day</th>
-	                  <th>IQ Test Hour</th>
 	                  <th>Added From</th>
 	                </tr>
 	                </thead>
@@ -67,11 +62,6 @@ Participants
 	                		<td>{{ $participant->faculty }}</td>
 	                		<td>{{ $participant->department }}</td>
 	                		<td>{{ $participant->academic_year }}</td>
-	                		<td>{{ App\Models\Workshop::find($participant->first)->name }}</td>
-	                		<td>{!! $participant->why_first !!}</td>
-	                		<td>{{ ($participant->second) ? App\Models\Workshop::find($participant->second)->name : "" }}</td>
-	                		<td>{{ $participant->iq_test_day }}</td>
-	                		<td>{{ $participant->iq_test_hour }}</td>
 	                		<td>{{ $participant->created_at->diffForHumans() }}</td>
 	                	</tr>
 	                @endforeach
@@ -89,11 +79,6 @@ Participants
 	                  <th>Faculty</th>
 	                  <th>Department</th>
 	                  <th>Academic Year</th>
-	                  <th>First Preference</th>
-	                  <th>Why first preference</th>
-	                  <th>second Preference</th>
-	                  <th>IQ Test Day</th>
-	                  <th>IQ Test Hour</th>
 	                  <th>Added From</th>
 	                </tr>
 	                </tfoot>

@@ -127,6 +127,12 @@ class TopicsController extends Controller
             $topic->body = $request->body;
             $topic->pdf = $request->pdf;
             $topic->headline_id = $request->headline;
+            if ($request->hasFile('image')) {
+                $imagePath = $request->image->store('/public/magazine/19/topics');
+                $oldPath = $topic->image;
+                Storage::delete([$oldPath]);
+                $topic->image = $imagePath;
+            }
             $topic->save();
             return redirect('admin/topics')->with(['status' => 'Added Successfully!!']);
         }

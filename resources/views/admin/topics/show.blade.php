@@ -29,6 +29,7 @@
 	            </div>
 	            <!-- /.box-header -->
 	            <div class="box-body">
+                <img class="img-responsive" alt="{{ $topic->title }}" src="{{ App\Helpers\Helpers::storage($topic->image) }}">
 	              @foreach ($errors->all() as $error)
         					<div class="alert alert-danger col-sm-9 col-sm-offset-3">{{ $error }}</div>
         				@endforeach
@@ -39,7 +40,7 @@
         				    </div>
         				@endif
                 
-                <div class="text-right">
+                <div class="text-right" style="direction: rtl;">
                   {!! $topic->body !!}
                 </div>
                 

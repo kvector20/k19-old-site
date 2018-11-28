@@ -30,8 +30,8 @@ Route::group(['namespace' => 'User'], function() {
 
 	Route::get('/events/participants/19/recruitment', 'eventsConteroller@participants19')->name('events.participants19');
 	Route::POST('/events/participants/19/recruitment', 'eventsConteroller@participants19Store')->name('events.participants19');
-	Route::get('/events/bullsEye/19/recruitment', 'eventsConteroller@bullsEye19')->name('events.bullsEye19');
-	Route::POST('/events/bullsEye/19/recruitment', 'eventsConteroller@bullsEye19Store')->name('events.bullsEye19');
+	Route::get('/events/opening/19/recruitment', 'eventsConteroller@opening19')->name('events.opening19');
+	Route::POST('/events/opening/19/recruitment', 'eventsConteroller@opening19Store')->name('events.opening19');
 
 	Route::get('/k19/magazine/m/{month}', 'magazineController@index')->name('k19.magazine.month');
 	Route::get('/k19/magazine/h/{headline}', 'magazineController@index_h')->name('k19.magazine.headline');
@@ -76,6 +76,12 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::resource('admin/events', 'EventsController');
 	Route::resource('admin/workshops', 'WorkshopsController');
 	Route::GET('admin/participants19', 'Participants19Controller@index')->name('participants19.index');
+	Route::GET('admin/participants19/rejected', 'Participants19Controller@rejected')->name('participants19.rejected');
+	Route::POST('admin/participants19/rejected', 'Participants19Controller@rejectedStore')->name('participants19.rejected');
+	
+	Route::GET('admin/opening19', 'Opening19Controller@index')->name('opening19.index');
+	Route::GET('admin/opening19/mail', 'Opening19Controller@mail')->name('opening19.mail');
+	Route::resource('admin/contact', 'ContactController');
 });
 
 

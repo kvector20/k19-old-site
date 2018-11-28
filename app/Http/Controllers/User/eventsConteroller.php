@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\OpeningRequest;
 use App\Http\Requests\ParticipantsRecruitment19Request;
+use App\Models\Opening19;
 use App\Models\Event;
 use App\Models\Participants19;
 use App\Models\Workshop;
@@ -45,10 +47,16 @@ class eventsConteroller extends Controller
         return redirect()->route('about.workshops')->with(['status' => 'You are registered successfully!!']);
     }
 
-    public function bullsEye19()
+    public function opening19()
     {
-        $event = Event::where('title', 'Bulls Eye')->first();
-        return view('user.events.bullsEye19', compact('event'));
+        $event = Event::where('title', 'K\'19 Opening')->first();
+        return view('user.events.opening19', compact('event'));
+    }
+
+    public function opening19Store(OpeningRequest $request)
+    {
+        $Opening = Opening19::create($request->all());
+        return redirect()->route('events')->with(['status' => 'You are registered successfully!!']);
     }
 
 }

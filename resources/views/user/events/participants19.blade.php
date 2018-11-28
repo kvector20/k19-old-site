@@ -129,11 +129,18 @@ K'19 Participants Recruitment
 
 				@php
 					$days = array(
-						'THU 11/10',
-						'FRI 12/10',
-						'SAT 13/10',
+						'THU 18/10',
+						'FRI 19/10',
+						'SAT 20/10',
+						'SUN 21/10',
+						'MON 22/10',
+						'TUE 23/10',
+						'WED 24/10',
+						'THU 25/10',
 					);
 					$hours = array(
+						'3:00 PM',
+						'3:30 PM',
 						'4:00 PM',
 						'4:30 PM',
 						'5:00 PM',

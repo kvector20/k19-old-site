@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Opening19;
 use App\Models\Participants19;
 use App\Models\Workshop;
 use Carbon\Carbon;
@@ -42,7 +43,9 @@ class HomeController extends Controller
             ->where('iq_test_hour', '<>', null)
             ->get()
             ->groupBy('iq_test_hour');
-            // return $iqs_dist_hours;
-        return view('admin.home', compact('participants_count', 'first', 'second', 'days_dist', 'iqs_dist_days', 'iqs_dist_hours'));
+
+        $opening_count = Opening19::all()->count();
+
+        return view('admin.home', compact('opening_count', 'participants_count', 'first', 'second', 'days_dist', 'iqs_dist_days', 'iqs_dist_hours'));
     }
 }

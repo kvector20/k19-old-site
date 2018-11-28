@@ -96,6 +96,24 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="{{ route('participants19.index') }}"><i class="fa text-red fa-circle-o"></i> View</a></li>
+              <li><a href="{{ route('participants19.rejected') }}"><i class="fa text-purple fa-circle-o"></i> Rejected</a></li>
+            </ul>
+          </li>
+        @endcan
+
+        @can('Opening19.view', Auth::user())
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-user"></i> <span>Opening 19</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('opening19.index') }}"><i class="fa text-red fa-circle-o"></i> View</a></li>
+              @can('Opening19.mail', Auth::user())
+                <li><a href="{{ route('opening19.mail') }}"><i class="fa text-purple fa-circle-o"></i> Email</a></li>
+              @endcan
             </ul>
           </li>
         @endcan
@@ -150,6 +168,24 @@
           </ul>
         </li>
         @endcan
+
+        @can('contact.view', Auth::user())
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-phone"></i> <span>Contact</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="{{ route('contact.index') }}"><i class="fa text-red fa-circle-o"></i> View</a></li>
+              @can('contact.create', Auth::user())
+                <li><a href="{{ route('contact.create') }}"><i class="fa text-purple fa-circle-o"></i> New</a></li>
+              @endcan
+            </ul>
+          </li>
+        @endcan
+
       </ul>
     </section>
     <!-- /.sidebar -->

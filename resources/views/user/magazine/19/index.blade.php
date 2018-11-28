@@ -24,7 +24,7 @@
                     @if (Route::current()->getName() == 'k19.magazine.month')
                     	<h2 style="font-family: 'Aref Ruqaa', cursive;">شهر {{ $dt->locale('ar')->monthName }}</h2>
                     @elseif (Route::current()->getName() == 'k19.magazine.headline')
-                    	<h2 style="font-family: 'Aref Ruqaa', cursive;">عنوان {{ $headline->name }}</h2>
+                    	<h2 style="font-family: 'Aref Ruqaa', cursive;">ركن {{ $headline->name }}</h2>
                     @endif
                 </div>
                 <div class="text-center">Enrich your knowledge and enjoy the beauty of words.</div>

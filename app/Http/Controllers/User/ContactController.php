@@ -21,8 +21,8 @@ class ContactController extends Controller
     		'subject' => 'required|string|min:3',
     		'message' => 'required|string|min:15',
     	]);
-    	// return $request->name;
     	$contact = new Contact;
+        $request->message = nl2br($request->message);
     	$contact->create($request->all());
     	return back()->with(['status' => 'Sent Successfully!!']);
     }
