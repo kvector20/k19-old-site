@@ -33,6 +33,9 @@ Route::group(['namespace' => 'User'], function() {
 	Route::get('/events/opening/19/recruitment', 'eventsConteroller@opening19')->name('events.opening19');
 	Route::POST('/events/opening/19/recruitment', 'eventsConteroller@opening19Store')->name('events.opening19');
 
+	Route::get('/events/memberssecond/19/recruitment', 'eventsConteroller@memberssecond19')->name('events.memberssecond19');
+	Route::POST('/events/memberssecond/19/recruitment', 'eventsConteroller@memberssecond19Store')->name('events.memberssecond19');
+
 	Route::get('/k19/magazine/m/{month}', 'magazineController@index')->name('k19.magazine.month');
 	Route::get('/k19/magazine/h/{headline}', 'magazineController@index_h')->name('k19.magazine.headline');
 	Route::get('/k19/magazine/t/{topic}', 'magazineController@topic')->name('k19.magazine.topic');
@@ -75,12 +78,17 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::post('admin/topics/{topic}/publish', 'TopicsController@publish')->name('topics.publish');
 	Route::resource('admin/events', 'EventsController');
 	Route::resource('admin/workshops', 'WorkshopsController');
+	
 	Route::GET('admin/participants19', 'Participants19Controller@index')->name('participants19.index');
 	Route::GET('admin/participants19/rejected', 'Participants19Controller@rejected')->name('participants19.rejected');
 	Route::POST('admin/participants19/rejected', 'Participants19Controller@rejectedStore')->name('participants19.rejected');
 	
+	Route::GET('admin/memberssecond19', 'MembersSecondController@index')->name('memberssecond19.index');
+
 	Route::GET('admin/opening19', 'Opening19Controller@index')->name('opening19.index');
 	Route::GET('admin/opening19/mail', 'Opening19Controller@mail')->name('opening19.mail');
+	Route::GET('admin/opening19/file', 'Opening19Controller@file')->name('opening19.file');
+	
 	Route::resource('admin/contact', 'ContactController');
 });
 

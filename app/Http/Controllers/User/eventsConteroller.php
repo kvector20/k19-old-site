@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MembersSecondRequest;
 use App\Http\Requests\OpeningRequest;
 use App\Http\Requests\ParticipantsRecruitment19Request;
-use App\Models\Opening19;
 use App\Models\Event;
+use App\Models\MemberSecond;
+use App\Models\Opening19;
 use App\Models\Participants19;
 use App\Models\Workshop;
 use Illuminate\Http\Request;
@@ -57,6 +59,19 @@ class eventsConteroller extends Controller
     {
         $Opening = Opening19::create($request->all());
         return redirect()->route('events')->with(['status' => 'You are registered successfully!!']);
+    }
+
+    public function memberssecond19()
+    {
+        $committees = Workshop::where('type', 'committees.second')->get();
+        $event = Event::where('title', 'K\'19 Members Recruitment Second Phase')->first();
+        return view('user.events.memberssecond19', compact('committees', 'event'));
+    }
+
+    public function memberssecond19Store(MembersSecondRequest $request)
+    {
+        $member = MemberSecond::create($request->all());
+        return back()->with(['status' => 'You are registered successfully!!']);
     }
 
 }

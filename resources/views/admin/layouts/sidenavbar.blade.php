@@ -101,6 +101,20 @@
           </li>
         @endcan
 
+        @can('memberssecond.view', Auth::user())
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-users"></i> <span>Members Second Phase</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('memberssecond19.index') }}"><i class="fa text-red fa-circle-o"></i> View</a></li>
+            </ul>
+          </li>
+        @endcan
+
         @can('Opening19.view', Auth::user())
           <li class="treeview">
             <a href="#">

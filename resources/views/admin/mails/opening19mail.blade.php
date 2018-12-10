@@ -1,9 +1,13 @@
 @component('mail::message')
 <img src="{{ asset('/user_style/images/openingmail/cover V2.png') }}">
-# Hello {{ $user->name }}
+# Welcome {{ $user->name }} to the game
 
 Hope this mail finds you well. <br />
-It is a great pleasure to invite you to our <b>8<sup>th</sup> Opening Ceremony</b>.
+It is a great pleasure to invite you to our <b>8<sup>th</sup> Opening Ceremony</b>. <br>
+Opening is a ceremony that we celebrate with the start of the academic year. <br>
+Opening has mant talks for powerfull speakers in many fields like shcolarship, fintech, career shifting ...etc. <br>
+<br>
+<b>Event Details:</b><br>
 @component('mail::table')
 |        		|          		|
 | ------------- |:-------------:|

@@ -25,6 +25,7 @@ class CreateMtopicsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('views')->default(0);
             $table->timestamp('publish')->nullable();
+            $table->boolean('commenting')->default(1);
             $table->timestamps();
         });
     }
