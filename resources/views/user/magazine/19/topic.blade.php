@@ -91,36 +91,40 @@ Global Page Section Start
                         </div>
                     @endforeach
                 </div>
-                <div class="post-comment">
-                    <h3>Leave a Comment</h3>
-                    <form role="form" action="{{ route('topic.comment', $topic->id) }}" method="POST">
-                        @csrf
-                        <div class="form-group">
-                        	<div class="row">
-	                            <div class="col-md-6">
-	                                <input type="text" class="form-control" required name="name" placeholder="Name">
-	                            </div>
-	                            <div class="col-md-6">
-	                                <input type="text" class="form-control" required name="email" placeholder="Email">
-	                            </div>
+
+                @if ($topic->commenting)
+                    <div class="post-comment">
+                        <h3>Leave a Comment</h3>
+                        <form role="form" action="{{ route('topic.comment', $topic->id) }}" method="POST">
+                            @csrf
+                            <div class="form-group">
+                            	<div class="row">
+    	                            <div class="col-md-6">
+    	                                <input type="text" class="form-control" required name="name" placeholder="Name">
+    	                            </div>
+    	                            <div class="col-md-6">
+    	                                <input type="text" class="form-control" required name="email" placeholder="Email">
+    	                            </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                        	<div class="row">
-	                            <div class="col-md-12">
-	                                <textarea class=" form-control" rows="8" required name="comment" placeholder="Leave your comment..."></textarea>
-	                            </div>
+                            <div class="form-group">
+                            	<div class="row">
+    	                            <div class="col-md-12">
+    	                                <textarea class=" form-control" rows="8" required name="comment" placeholder="Leave your comment..."></textarea>
+    	                            </div>
+                                </div>
                             </div>
-                        </div>
-                        <p>
-                        </p>
-                        <p>
-                            <button class="btn btn-danger" type="submit">Comment</button>
-                        </p>
-                        
-                        <p></p>
-                    </form>
-                </div>
+                            <p>
+                            </p>
+                            <p>
+                                <button class="btn btn-danger" type="submit">Comment</button>
+                            </p>
+                            
+                            <p></p>
+                        </form>
+                    </div>
+                @endif
+
                 
             </div>
         </div>
