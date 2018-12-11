@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MemberSecond;
 use App\Models\Opening19;
 use App\Models\Participants19;
 use App\Models\Workshop;
@@ -28,7 +29,8 @@ class HomeController extends Controller
     public function index()
     {
         $participants_count = Participants19::all()->count();
-        $first = Workshop::withCount('participantsFirst')->get();
+        $memberssecond_count = MemberSecond::all()->count();
+        $first = Workshop::where('type', 'academic')->orWhere('type', 'automotive')->withCount('participantsFirst')->get();
         $second = Workshop::withCount('participantsSecond')->get();
         $days_dist = Participants19::select('created_at')
             ->get()
@@ -46,6 +48,6 @@ class HomeController extends Controller
 
         $opening_count = Opening19::all()->count();
 
-        return view('admin.home', compact('opening_count', 'participants_count', 'first', 'second', 'days_dist', 'iqs_dist_days', 'iqs_dist_hours'));
+        return view('admin.home', compact('memberssecond_count','opening_count', 'participants_count', 'first', 'second', 'days_dist', 'iqs_dist_days', 'iqs_dist_hours'));
     }
 }

@@ -17,9 +17,26 @@
 
     <!-- Main content -->
     <section class="content">
-      @can('participants19.view', Auth::user())
       <!-- Small boxes (Stat box) -->
       <div class="row">
+      @can('participants19.view', Auth::user())
+          <!-- ./col -->
+          <div class="col-md-3">
+            <!-- small box -->
+            <div class="small-box bg-blue">
+              <div class="inner">
+                <h3>{{ $memberssecond_count }}<sup style="font-size: 20px">Memebers</sup></h3>
+
+                <p>Memebers number</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="{{ route('memberssecond19.index') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+      @endcan
+      @can('participants19.view', Auth::user())
         <!-- ./col -->
         <div class="col-md-3">
           <!-- small box -->
