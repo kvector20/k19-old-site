@@ -57,6 +57,27 @@
       <!-- AREA CHART -->
       <div class="box box-primary">
         <div class="box-header with-border">
+          <h3 class="box-title">Members first and second preference Chart</h3>
+
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <div class="box-body">
+          <div class="chart">
+            <canvas id="membersChart" style="height:250px"></canvas>
+          </div>
+        </div>
+        <!-- /.box-body -->
+      </div>
+
+      <!-- AREA CHART -->
+
+      <!-- AREA CHART -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
           <h3 class="box-title">Participants first and second preference Chart</h3>
 
           <div class="box-tools pull-right">
@@ -206,6 +227,44 @@
     }
 
 
+    var areaChartDataForMembersSecondDist = {
+      labels: [
+        @foreach ($first_member as $workshop)
+          "{{ substr($workshop->name, 0, 12) }}",
+        @endforeach
+      ],
+      datasets: [
+        {
+          label: "Second Preference",
+          fillColor: "rgba(210, 214, 222, 1)",
+          strokeColor: "rgba(210, 214, 222, 1)",
+          pointColor: "rgba(210, 214, 222, 1)",
+          pointStrokeColor: "#c1c7d1",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(220,220,220,1)",
+          data: [
+            @foreach ($second_member as $workshop)
+              {{ $workshop->members_second_count }},
+            @endforeach
+          ]
+        },
+        {
+          label: "First Preference",
+          fillColor: "rgba(255,0,0,0.9)",
+          strokeColor: "rgba(255,0,0,0.8)",
+          pointColor: "#f00",
+          pointStrokeColor: "rgba(255,0,0,1)",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(255,0,0,1)",
+          data: [
+            @foreach ($first_member as $workshop)
+              {{ $workshop->members_first_count }},
+            @endforeach
+          ]
+        }
+      ]
+    };
+
     var areaChartDataForWorkshopsDist = {
       labels: [
         @foreach ($first as $workshop)
@@ -316,6 +375,7 @@
       ]
     };
 
+    myChart('#membersChart', areaChartDataForMembersSecondDist)
     myChart('#areaChart', areaChartDataForWorkshopsDist)
     myChart('#daysDist', areaChartDataForDaysDist)
     myChart('#iqsDistDays', areaChartDataForIQDaysDist)

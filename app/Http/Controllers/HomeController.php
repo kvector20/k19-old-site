@@ -31,7 +31,11 @@ class HomeController extends Controller
         $participants_count = Participants19::all()->count();
         $memberssecond_count = MemberSecond::all()->count();
         $first = Workshop::where('type', 'academic')->orWhere('type', 'automotive')->withCount('participantsFirst')->get();
-        $second = Workshop::withCount('participantsSecond')->get();
+        $second = Workshop::where('type', 'academic')->orWhere('type', 'automotive')->withCount('participantsSecond')->get();
+
+        $first_member = Workshop::where('type', 'committees.second')->withCount('membersFirst')->get();
+        $second_member = Workshop::where('type', 'committees.second')->withCount('membersSecond')->get();
+
         $days_dist = Participants19::select('created_at')
             ->get()
             ->groupBy(function($date) {
@@ -48,6 +52,6 @@ class HomeController extends Controller
 
         $opening_count = Opening19::all()->count();
 
-        return view('admin.home', compact('memberssecond_count','opening_count', 'participants_count', 'first', 'second', 'days_dist', 'iqs_dist_days', 'iqs_dist_hours'));
+        return view('admin.home', compact('memberssecond_count','opening_count', 'participants_count', 'first', 'second', 'days_dist', 'iqs_dist_days', 'iqs_dist_hours', 'first_member', 'second_member'));
     }
 }
