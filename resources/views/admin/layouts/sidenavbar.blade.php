@@ -86,6 +86,24 @@
           </li>
         @endcan
 
+        @can('career6.view', Auth::user())
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-calendar"></i> <span>Career Launcher 6</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('career6.index') }}"><i class="fa text-red fa-circle-o"></i> View</a></li>
+              @can('career6.session', Auth::user())
+                <li><a href="{{ route('career6.session') }}"><i class="fa text-purple fa-circle-o"></i> Sessions</a></li>
+                <li><a href="{{ route('career6.session.create') }}"><i class="fa text-blue fa-circle-o"></i> New</a></li>
+              @endcan
+            </ul>
+          </li>
+        @endcan
+
         @can('participants19.view', Auth::user())
           <li class="treeview">
             <a href="#">
