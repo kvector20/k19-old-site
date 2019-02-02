@@ -1,5 +1,5 @@
 @component('mail::message')
-<img src="{{ asset('/user_style/images/career6/cover V2.jpg') }}">
+<img src="{{ asset('/user_style/images/career6/cover V2.png') }}">
 # Welcome {{ $name }} to Career Launcher 6<sup>th</sup> Edition
 
 Hope this mail finds you well. <br />
@@ -13,7 +13,7 @@ This mail is a confirmation mail for your registration in <b>{{ App\Models\CWork
 @endcomponent
 
 Visit our event on Facebook
-@component('mail::button', ['url' => 'https://www.facebook.com/events/459632241227747/', 'color' => 'red'])
+@component('mail::button', ['url' => 'https://www.facebook.com/events/1243280675797115/', 'color' => 'red'])
 Career Launcher 6th Facebook Event
 @endcomponent
 

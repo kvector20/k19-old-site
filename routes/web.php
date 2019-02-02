@@ -99,6 +99,8 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::GET('admin/career6/sessions', 'Career6Controller@sessions')->name('career6.session');
 	Route::GET('admin/career6/sessions/create', 'Career6Controller@create')->name('career6.session.create');
 	Route::POST('admin/career6/sessions/create', 'Career6Controller@store');
+	Route::GET('admin/career6/sessions/{session}/edit', 'Career6Controller@edit')->name('career6.session.edit');
+	Route::PUT('admin/career6/sessions/{session}/update', 'Career6Controller@update')->name('career6.session.update');
 	Route::POST('admin/career6/sessions/status/{session}', 'Career6Controller@status')->name('career6.session.status');
 
 	Route::resource('admin/contact', 'ContactController');

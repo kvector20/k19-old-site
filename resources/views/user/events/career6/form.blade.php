@@ -48,19 +48,19 @@ Career Launcher 6th edition
 		">
 		@if ($sessions->isEmpty())
 			<div class="col-12 col-md-8 text-center ml-auto mr-auto">
-				<h1 style="font-family: 'Courgette', cursive;">Comming Soon</h1>
+				<h1 style="font-family: 'Courgette', cursive;">Coming Soon</h1>
 			</div>
 		@else
 		@php
 			$departments = [
-				'juniors' => 'Juniors',
+				'juniors' => 'Juniors (School Students)',
 				'civil' => 'Civil and Architecture Engineering',
 				'general' => 'General',
 				'mech' => 'Mechanical Engineering',
 				'elec' => 'Electrical Engineering',
 				'bio' => 'Biomedical Engineering',
 				'com' => 'Computer and Communication Engineering',
-				'juniors' => 'Juniors',
+				'fair' => 'Fair',
 			];
 		@endphp
 		<div class="col-12 col-md-8 ml-auto mr-auto mb-3 border" style="background-image: url({{ asset('/user_style/images/career6/rocket.png') }}); background-repeat: no-repeat; background-position: center center;">
@@ -76,7 +76,7 @@ Career Launcher 6th edition
 				@csrf
 				<div class="form-group">
 					<label for="">Full Name</label>
-					<input type="text" name="name" placeholder="Full Name" required value="{{ old('name') }}" class="form-control">
+					<input type="text" name="name" placeholder="Full Name" autofocus required value="{{ old('name') }}" class="form-control">
 					<small class="text-muted">Write your full name</small>
 				</div>
 				<div class="form-group">
@@ -84,52 +84,66 @@ Career Launcher 6th edition
 					<input type="email" name="email" placeholder="Email" required value="{{ old('email') }}" class="form-control">
 					<small class="text-muted">Write valid email</small>
 				</div>
+				<input type="hidden" name="form" value="{{ $form }}">
 				<div class="form-group">
 					<label for="">Mobile Number</label>
 					<input type="tel" name="phone" placeholder="Mobile Number" required value="{{ old('phone') }}" class="form-control">
 					<small class="text-muted">Write valid mobile number</small>
 				</div>
-				<div class="form-group">
-					<label for="">National ID</label>
-					<input type="text" name="national_id" placeholder="National ID" required value="{{ old('national_id') }}" class="form-control" minlength="14" maxlength="14">
-					<small class="text-muted">Write your national ID like: 12345678912345 <b>it must be 14 numbers</b></small>
-				</div>
+				@if ($form != "juniors")
+					<div class="form-group">
+						<label for="">National ID</label>
+						<input type="text" name="national_id" placeholder="National ID" required value="{{ old('national_id') }}" class="form-control" minlength="14" maxlength="14">
+						<small class="text-muted">Write your national ID like: 12345678912345 <b>it must be 14 numbers</b></small>
+					</div>
+				@endif
 				<div class="form-group">
 					<label for="">Facebook Link</label>
 					<input type="url" name="facebook_link" placeholder="Facebook Link" required value="{{ old('facebook_link') }}" class="form-control">
 					<small class="text-muted">Write link like this <a href="#">https://www.facebook.com/your.name</a></small>
 				</div>
-				<div class="form-group">
-					<label for="">University</label>
-					<input type="text" name="university" placeholder="University" required value="{{ old('university') }}" class="form-control">
-				</div>
-				<div class="form-group">
-					<label for="">Faculty</label>
-					<input type="text" name="faculty" placeholder="Faculty" required value="{{ old('faculty') }}" class="form-control">
-				</div>
-				<div class="form-group">
-					<label for="">Department</label>
-					<input type="text" name="department" placeholder="Department" required value="{{ old('department') }}" class="form-control">
-				</div>
-				<div class="form-group">
-					<label for="">Academic Year</label>
-					<input type="text" name="academic_year" placeholder="Academic Year" required value="{{ old('academic_year') }}" class="form-control">
-					<small class="text-muted">Academic year like first, second, perpratory ...etc.</small>
-				</div>
+				@if ($form == "juniors")
+					<div class="form-group">
+						<label for="">School</label>
+						<input type="text" name="university" placeholder="School" required value="{{ old('university') }}" class="form-control">
+					</div>
+				@else
+					<div class="form-group">
+						<label for="">University</label>
+						<input type="text" name="university" placeholder="University" required value="{{ old('university') }}" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="">Faculty</label>
+						<input type="text" name="faculty" placeholder="Faculty" required value="{{ old('faculty') }}" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="">Department</label>
+						<input type="text" name="department" placeholder="Department" required value="{{ old('department') }}" class="form-control">
+					</div>
+				@endif
+					<div class="form-group">
+						<label for="">Academic Year</label>
+						<input type="text" name="academic_year" placeholder="Academic Year" required value="{{ old('academic_year') }}" class="form-control">
+						<small class="text-muted">Academic year like first, second, perpratory ...etc.</small>
+					</div>
 
-				<div class="form-group">
-					<label for="">Session</label>
-					<select name="session" required class="form-control" id="">
-						<option value="">Choose Session</option>
-						@foreach ($sessions as $session)
-							<option
-							@if ($session->id == old('session'))
-								selected
-							@endif
-							value="{{ $session->id }}">{{ $session->name }} - {{ $session->company }}</option>
-						@endforeach
-					</select>
-				</div>
+				@if ($form == 'fair')
+					<input type="hidden" name="session" value="{{ App\Models\CWorkshop::where('category', 'fair')->first()->id }}">
+				@else
+					<div class="form-group">
+						<label for="">Session</label>
+						<select name="session" required class="form-control" id="">
+							<option value="">Choose Session</option>
+							@foreach ($sessions as $session)
+								<option
+								@if ($session->id == old('session'))
+									selected
+								@endif
+								value="{{ $session->id }}">{{ $session->name }} - {{ $session->company }}</option>
+							@endforeach
+						</select>
+					</div>
+				@endif
 
 				<div class="form-group">
 					<label for="">You will come with our bus?</label>
@@ -150,7 +164,7 @@ Career Launcher 6th edition
 
 			    <div class="blockquote-footer">
 			        <small>
-			          	Note that bus fees is <b>20 LE</b>.
+			          	Note that bus fees is <b>25 LE</b>.
 			        </small>
 			    </div>
 			    <div class="blockquote-footer">

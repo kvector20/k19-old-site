@@ -36,6 +36,23 @@
             </div>
           </div>
       @endcan
+      @can('career6.view', Auth::user())
+          <!-- ./col -->
+          <div class="col-md-3">
+            <!-- small box -->
+            <div class="small-box bg-red">
+              <div class="inner">
+                <h3>{{ $career6_count }}<sup style="font-size: 20px">Participants</sup></h3>
+
+                <p>Career numbers</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="{{ route('career6.index') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+      @endcan
       @can('participants19.view', Auth::user())
         <!-- ./col -->
         <div class="col-md-3">
@@ -52,8 +69,68 @@
             <a href="{{ route('participants19.index') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
+      @endcan
       </div>
 
+      @can('career6.view', Auth::user())
+        <!-- AREA CHART -->
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">Career Companies Chart</h3>
+
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+          </div>
+          <div class="box-body">
+            <div class="chart">
+              <canvas id="careerChart" style="height:250px"></canvas>
+            </div>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- AREA CHART -->
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">Career Days Chart</h3>
+
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+          </div>
+          <div class="box-body">
+            <div class="chart">
+              <canvas id="careerDaysChart" style="height:250px"></canvas>
+            </div>
+          </div>
+          <!-- /.box-body -->
+        </div>
+
+        <!-- AREA CHART -->
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">Career Hours Chart</h3>
+
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+          </div>
+          <div class="box-body">
+            <div class="chart">
+              <canvas id="careerHoursChart" style="height:250px"></canvas>
+            </div>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      @endcan
+
+      @can('participants19.view', Auth::user())
       <!-- AREA CHART -->
       <div class="box box-primary">
         <div class="box-header with-border">
@@ -327,6 +404,78 @@
       ]
     };
 
+    var areaChartDataForCareer6DaysDist = {
+      labels: [
+        @foreach ($career6_days_dist as $day => $value)
+          "{{ $day }}",
+        @endforeach
+      ],
+      datasets: [
+        {
+          label: "Days",
+          fillColor: "#EB2826",
+          strokeColor: "#EB2826",
+          pointColor: "#3b8bba",
+          pointStrokeColor: "rgba(60,141,188,1)",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(60,141,188,1)",
+          data: [
+            @foreach ($career6_days_dist as $day)
+              {{ count($day) }},
+            @endforeach
+          ]
+        }
+      ]
+    };
+
+    var areaChartDataForCareer6HoursDist = {
+      labels: [
+        @foreach ($career6_hours_dist as $hour => $value)
+          "{{ $hour }}",
+        @endforeach
+      ],
+      datasets: [
+        {
+          label: "H ours",
+          fillColor: "#00B361",
+          strokeColor: "#00B361",
+          pointColor: "#3b8bba",
+          pointStrokeColor: "rgba(60,141,188,1)",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(60,141,188,1)",
+          data: [
+            @foreach ($career6_hours_dist as $hour)
+              {{ count($hour) }},
+            @endforeach
+          ]
+        }
+      ]
+    };
+
+    var areaChartDataForCareer6Dist = {
+      labels: [
+        @foreach ($sessions_rate as $session)
+          "{{ substr($session->name, 0, 15) }}",
+        @endforeach
+      ],
+      datasets: [
+        {
+          label: "session",
+          fillColor: "rgba(60,141,188,0.9)",
+          strokeColor: "rgba(60,141,188,0.8)",
+          pointColor: "#3b8bba",
+          pointStrokeColor: "rgba(60,141,188,1)",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(60,141,188,1)",
+          data: [
+            @foreach ($sessions_rate as $session)
+              {{ $session->participants_count }},
+            @endforeach
+          ]
+        }
+      ]
+    };
+
     var areaChartDataForIQDaysDist = {
       labels: [
         @foreach ($iqs_dist_days as $day => $value)
@@ -375,6 +524,9 @@
       ]
     };
 
+    myChart('#careerChart', areaChartDataForCareer6Dist)
+    myChart('#careerDaysChart', areaChartDataForCareer6DaysDist)
+    myChart('#careerHoursChart', areaChartDataForCareer6HoursDist)
     myChart('#membersChart', areaChartDataForMembersSecondDist)
     myChart('#areaChart', areaChartDataForWorkshopsDist)
     myChart('#daysDist', areaChartDataForDaysDist)

@@ -32,7 +32,10 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        if (auth()->user()->can('contact.create')) {
+            return view('admin.contacts.create');
+        }
+        abort(404);
     }
 
     /**

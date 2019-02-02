@@ -95,4 +95,53 @@ class Career6Controller extends Controller
         }
         abort(404);
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(CWorkshop $session)
+    {
+        if (Auth::user()->can('career6.session')) {
+            $categories = [
+                'juniors' => 'Juniors (School Students)',
+                'civil' => 'Civil and Architecture Engineering',
+                'general' => 'General',
+                'mech' => 'Mechanical Engineering',
+                'elec' => 'Electrical Engineering',
+                'bio' => 'Biomedical Engineering',
+                'com' => 'Computer and Communication Engineering',
+                'fair' => 'Fair',
+            ];
+            return view('admin.career6.edit', compact('session', 'categories'));
+        }
+        abort(404);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, CWorkshop $session)
+    {
+        if (Auth::user()->can('career6.session')) {
+            $this->validate($request, [
+                'name' => 'required|string',
+                'company' => 'required|string',
+                'category' => 'required|string',
+            ]);
+            $session->name = $request->name;
+            $session->company = $request->company;
+            $session->category = $request->category;
+            $session->description = $request->description;
+            $session->save();
+            return redirect()->route('career6.session')->with('status', 'Updated Successfully');
+        }
+        abort(404);
+    }
 }

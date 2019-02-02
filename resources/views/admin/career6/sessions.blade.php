@@ -71,6 +71,7 @@ Career Launcher 6th Sessions
 									@csrf
 		                            <input name="status" required value="{{ $session->status }}" id="status" type="checkbox" {{ ($session->status) ? 'checked' : '' }} data-toggle="toggle" data-onstyle="success"  data-offstyle="danger">
 		                        </form>
+	                			<a href="{{ route('career6.session.edit', $session->id) }}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
 	                		</td>
 	                		<td>{{ $session->created_at->diffForHumans() }}</td>
 	                		<td>{{ $session->updated_at->diffForHumans() }}</td>

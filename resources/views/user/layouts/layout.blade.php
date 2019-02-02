@@ -5,7 +5,7 @@
 </head>
 <body>
 	
-	@include('user.layouts.loader')
+	{{-- @include('user.layouts.loader') --}}
 	@include('user.layouts.sidenav')
 
 	<div class="pusher dimmed">

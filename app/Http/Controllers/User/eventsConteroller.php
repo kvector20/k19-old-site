@@ -111,17 +111,17 @@ class eventsConteroller extends Controller
                 }),
             ],
             'phone' => 'required|string|max:11',
-            'national_id' => 'required|string|max:14|min:14',
+            'national_id' => 'required_unless:form,juniors|string|max:14|min:14',
             'facebook_link' => 'required|url',
             'university' => 'required|string|min:2',
-            'faculty' => 'required|string|min:2',
-            'department' => 'required|string|min:2',
+            'faculty' => 'required_unless:form,juniors|string|min:2',
+            'department' => 'required_unless:form,juniors|string|min:2',
             'academic_year' => 'required|string|min:2',
             'bus' => 'required'
         ]);
         $participant = Career6::create($request->all());
-        Mail::to($participant->email)->send(new Career6ConfirmationMail($participant->name, $participant->session));
-        return back()->with(['status' => 'You are registered successfully, Check your mailbox!!']);
+        // Mail::to($participant->email)->send(new Career6ConfirmationMail($participant->name, $participant->session));
+        return back()->with(['status' => 'You are registered successfully!!']);
     }
 
 }
