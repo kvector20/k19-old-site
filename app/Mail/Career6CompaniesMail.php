@@ -11,14 +11,18 @@ class Career6CompaniesMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $subject;
+    public $message;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($subject, $message)
     {
-        //
+        $this->subject = $subject;
+        $this->message = $message;
     }
 
     /**
@@ -28,6 +32,6 @@ class Career6CompaniesMail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->markdown('admin/mails/career6companiesmail')->subject($this->subject);
     }
 }

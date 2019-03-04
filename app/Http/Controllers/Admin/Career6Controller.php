@@ -3,10 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\Career6InvitationMail;
+use App\Models\Ad;
 use App\Models\CWorkshop;
 use App\Models\Career6;
+use App\Models\MemberSecond;
+use App\Models\Opening19;
+use App\Models\Participants19;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class Career6Controller extends Controller
 {
@@ -143,5 +150,43 @@ class Career6Controller extends Controller
             return redirect()->route('career6.session')->with('status', 'Updated Successfully');
         }
         abort(404);
+    }
+
+    public function mail()
+    {
+        if (auth()->user()->can('career6.session')) {
+            $users = Participants19::whereNotIn('email', function($query) {
+                $query->select('email')->from('ads')->where('ad_name', 'Career6');
+            })->get(["name", "email"]); 
+            $new_users = Opening19::whereNotIn('email', function($query) {
+                $query->select('email')->from('ads')->where('ad_name', 'Career6');
+            })->get(["name", "email"]);
+            $users = $users->concat($new_users);
+            $new_users = MemberSecond::whereNotIn('email', function($query) {
+                $query->select('email')->from('ads')->where('ad_name', 'Career6');
+            })->get(["name", "email"]);
+            $users = $users->concat($new_users);
+            // return new OpeningMail($users[0]);
+            foreach ($users as $user) {
+                Mail::to($user->email)->send(new Career6InvitationMail($user->name));
+                echo "sent to " . $user->email  . "<br>";
+                $ad = new Ad;
+                $ad->email = $user->email;
+                $ad->ad_name = "Career6";
+                $ad->save();
+            }
+            return back();
+        }
+        abort(404);
+    }
+
+    public function file()
+    {
+        $users = Career6::where('id', '>', 1083)->get();
+        Storage::disk('local')->put('Career6.xls', 'Id, Name, University, Faculty, Department');
+        foreach ($users as $user) {
+            Storage::disk('local')->append('Career6.xls', $user->id . ', ' . $user->name . ', ' . $user->national_id . ', ' . $user->phone);
+        }
+        return $users;
     }
 }

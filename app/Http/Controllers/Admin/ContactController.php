@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\Career6CompaniesMail;
 use App\Models\Contact;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -33,7 +35,8 @@ class ContactController extends Controller
     public function create()
     {
         if (auth()->user()->can('contact.create')) {
-            return view('admin.contacts.create');
+            $unread = Contact::where('seen_by_id', null)->count();
+            return view('admin.contacts.create', compact('unread'));
         }
         abort(404);
     }
@@ -46,7 +49,16 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (auth()->user()->can('contact.create')) {
+            $this->validate($request, [
+                'to' => 'required|email',
+                'subject' => 'required|string',
+                'message' => 'required|string',
+            ]);
+            Mail::to($request->to)->send(new Career6CompaniesMail($request->subject, $request->message));
+            return back()->with(['status' => 'Sent']);
+        }
+        abort(404);
     }
 
     /**

@@ -46,6 +46,9 @@ Route::group(['namespace' => 'User'], function() {
 	Route::get('/k19/magazine/h/{headline}', 'magazineController@index_h')->name('k19.magazine.headline');
 	Route::get('/k19/magazine/t/{topic}', 'magazineController@topic')->name('k19.magazine.topic');
 	
+	Route::get('/k19/magazine', 'magazineController@indexApi')->name('k19.magazine');
+	Route::get('/k19/magazine/{id}', 'magazineController@getApi')->name('k19.magazine.id');
+	
 	Route::post('/k19/magazine/c/{topic}', 'magazineController@comment')->name('topic.comment');
 
 	Route::get('/contact', 'ContactController@index')->name('contact');
@@ -93,16 +96,17 @@ Route::group(['namespace' => 'Admin'],function(){
 
 	Route::GET('admin/opening19', 'Opening19Controller@index')->name('opening19.index');
 	Route::GET('admin/opening19/mail', 'Opening19Controller@mail')->name('opening19.mail');
-	Route::GET('admin/opening19/file', 'Opening19Controller@file')->name('opening19.file');
 	
 	Route::GET('admin/career6', 'Career6Controller@index')->name('career6.index');
 	Route::GET('admin/career6/sessions', 'Career6Controller@sessions')->name('career6.session');
 	Route::GET('admin/career6/sessions/create', 'Career6Controller@create')->name('career6.session.create');
 	Route::POST('admin/career6/sessions/create', 'Career6Controller@store');
 	Route::GET('admin/career6/sessions/{session}/edit', 'Career6Controller@edit')->name('career6.session.edit');
+	Route::GET('admin/career6/mail', 'Career6Controller@mail')->name('career6.mail');
 	Route::PUT('admin/career6/sessions/{session}/update', 'Career6Controller@update')->name('career6.session.update');
 	Route::POST('admin/career6/sessions/status/{session}', 'Career6Controller@status')->name('career6.session.status');
 
+	Route::GET('admin/file', 'Career6Controller@file');
 	Route::resource('admin/contact', 'ContactController');
 });
 

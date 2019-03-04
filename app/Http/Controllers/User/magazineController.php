@@ -8,7 +8,7 @@ use App\Models\mheadline;
 use App\Models\mtopic;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Http\Resources\MagazineTopicResource;
 
 class magazineController extends Controller
 {
@@ -29,7 +29,22 @@ class magazineController extends Controller
 			});
 
     	return view('user.magazine.19.index', compact('headlines', 'recentTopics', 'topics', 'dt', 'months'));
-    }
+	}
+	
+	public function indexApi() {
+		return mtopic::select(['id', 'title'])->where('publish', '<>', null)->get()->map(function($topic) {
+			return [
+				'id' => $topic->id,
+				'title' => $topic->title,
+				'url' => route('k19.magazine.id', $topic->id)
+			];
+		});
+	}
+
+	public function getApi($id) {
+		$topic = mtopic::findOrFail($id);
+		return new MagazineTopicResource($topic);	
+	}
 
     public function index_h(mheadline $headline)
     {

@@ -11,14 +11,16 @@ class Career6InvitationMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $name;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($name)
     {
-        //
+        $this->name = $name;
     }
 
     /**
@@ -28,6 +30,6 @@ class Career6InvitationMail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->markdown('admin/mails/career6invitationmail')->subject('Career Launcher 6.0 Invitation');
     }
 }

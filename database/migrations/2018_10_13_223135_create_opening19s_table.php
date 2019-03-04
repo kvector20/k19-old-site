@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBullsEye19sTable extends Migration
+class CreateOpening19sTable extends Migration
 {
     /**
      * Run the migrations.
