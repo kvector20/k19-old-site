@@ -46,6 +46,9 @@ Global Page Section Start
                 <div class="post-content text-right" style="direction: rtl;">
                     {!! $topic->body !!}
                 </div>
+                <div>
+                    Get the PDF version: <a href="{{ $topic->pdf }}">{{ $topic->pdf }}</a>
+                </div>
             </div>
 
             <div class="col-md-3">

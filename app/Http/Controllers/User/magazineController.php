@@ -9,6 +9,7 @@ use App\Models\mtopic;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Resources\MagazineTopicResource;
+use Illuminate\Support\Facades\Storage;
 
 class magazineController extends Controller
 {
@@ -32,10 +33,11 @@ class magazineController extends Controller
 	}
 	
 	public function indexApi() {
-		return mtopic::select(['id', 'title'])->where('publish', '<>', null)->get()->map(function($topic) {
+		return mtopic::select(['id', 'title', 'image'])->where('publish', '<>', null)->get()->map(function($topic) {
 			return [
 				'id' => $topic->id,
 				'title' => $topic->title,
+				'image' => Storage::url($topic->image),
 				'url' => route('k19.magazine.id', $topic->id)
 			];
 		});
