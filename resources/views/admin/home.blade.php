@@ -19,6 +19,23 @@
     <section class="content">
       <!-- Small boxes (Stat box) -->
       <div class="row">
+      @can('highway.view', Auth::user())
+          <!-- ./col -->
+          <div class="col-md-3">
+            <!-- small box -->
+            <div class="small-box bg-purple">
+              <div class="inner">
+                <h3>{{ $highway_count }}<sup style="font-size: 20px">Applicants</sup></h3>
+
+                <p>Memebers number</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="{{ route('highway19.index') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+      @endcan
       @can('participants19.view', Auth::user())
           <!-- ./col -->
           <div class="col-md-3">

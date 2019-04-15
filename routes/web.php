@@ -42,6 +42,12 @@ Route::group(['namespace' => 'User'], function() {
 	Route::POST('/events/career6/recruitment', 'eventsConteroller@career6Store');
 	// -------------------------------- Career 6 -----------------------------------------------------
 
+	// -------------------------------- Highway -----------------------------------------------------
+	Route::get('/events/highway/19', 'eventsConteroller@highway19')->name('events.highway19');
+	Route::POST('/events/highway/19', 'eventsConteroller@highway19Store')->name('events.highway19');
+
+	// -------------------------------- Highway -----------------------------------------------------
+
 	Route::get('/k19/magazine/m/{month}', 'magazineController@index')->name('k19.magazine.month');
 	Route::get('/k19/magazine/h/{headline}', 'magazineController@index_h')->name('k19.magazine.headline');
 	Route::get('/k19/magazine/t/{topic}', 'magazineController@topic')->name('k19.magazine.topic');
@@ -93,7 +99,7 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::POST('admin/participants19/rejected', 'Participants19Controller@rejectedStore')->name('participants19.rejected');
 	
 	Route::GET('admin/memberssecond19', 'MembersSecondController@index')->name('memberssecond19.index');
-
+	
 	Route::GET('admin/opening19', 'Opening19Controller@index')->name('opening19.index');
 	Route::GET('admin/opening19/mail', 'Opening19Controller@mail')->name('opening19.mail');
 	
@@ -105,6 +111,9 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::GET('admin/career6/mail', 'Career6Controller@mail')->name('career6.mail');
 	Route::PUT('admin/career6/sessions/{session}/update', 'Career6Controller@update')->name('career6.session.update');
 	Route::POST('admin/career6/sessions/status/{session}', 'Career6Controller@status')->name('career6.session.status');
+	
+	// Highway
+	Route::GET('admin/highway19', 'Highway19Controller@index')->name('highway19.index');
 
 	Route::GET('admin/file', 'Career6Controller@file');
 	Route::resource('admin/contact', 'ContactController');

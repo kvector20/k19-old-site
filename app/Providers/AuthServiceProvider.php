@@ -40,5 +40,6 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('Opening19.mail', 'App\Policies\OpeningPolicy@mail');
         Gate::define('career6.view', 'App\Policies\Career6Policy@view');
         Gate::define('career6.session', 'App\Policies\Career6Policy@session');
+        Gate::define('highway.view', 'App\Policies\Highway19Policy@view');
     }
 }

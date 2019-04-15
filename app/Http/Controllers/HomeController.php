@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CWorkshop;
-use App\Models\Career6;
-use App\Models\MemberSecond;
-use App\Models\Opening19;
-use App\Models\Participants19;
-use App\Models\Workshop;
+use App\Highway;
 use Carbon\Carbon;
+use App\Models\Career6;
+use App\Models\Workshop;
+use App\Models\CWorkshop;
+use App\Models\Opening19;
+use App\Models\MemberSecond;
 use Illuminate\Http\Request;
+use App\Models\Participants19;
 
 class HomeController extends Controller
 {
@@ -33,6 +34,7 @@ class HomeController extends Controller
         $participants_count = Participants19::all()->count();
         $memberssecond_count = MemberSecond::all()->count();
         $career6_count = Career6::all()->count();
+        $highway_count = Highway::all()->count();
         $first = Workshop::where('type', 'academic')->orWhere('type', 'automotive')->withCount('participantsFirst')->get();
         $second = Workshop::where('type', 'academic')->orWhere('type', 'automotive')->withCount('participantsSecond')->get();
 
@@ -71,6 +73,6 @@ class HomeController extends Controller
 
         $opening_count = Opening19::all()->count();
 
-        return view('admin.home', compact('memberssecond_count','opening_count', 'participants_count', 'first', 'second', 'days_dist', 'iqs_dist_days', 'iqs_dist_hours', 'first_member', 'second_member', 'career6_count', 'sessions_rate', 'career6_days_dist', 'career6_hours_dist'));
+        return view('admin.home', compact('memberssecond_count','opening_count', 'highway_count', 'participants_count', 'first', 'second', 'days_dist', 'iqs_dist_days', 'iqs_dist_hours', 'first_member', 'second_member', 'career6_count', 'sessions_rate', 'career6_days_dist', 'career6_hours_dist'));
     }
 }

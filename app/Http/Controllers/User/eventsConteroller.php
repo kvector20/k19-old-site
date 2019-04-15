@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\MembersSecondRequest;
-use App\Http\Requests\OpeningRequest;
-use App\Http\Requests\ParticipantsRecruitment19Request;
-use App\Mail\Career6ConfirmationMail;
-use App\Models\CWorkshop;
-use App\Models\Career6;
+use App\Highway;
 use App\Models\Event;
-use App\Models\MemberSecond;
-use App\Models\Opening19;
-use App\Models\Participants19;
+use App\Models\Career6;
 use App\Models\Workshop;
+use App\Models\CWorkshop;
+use App\Models\Opening19;
+use App\Models\MemberSecond;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Participants19;
 use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\OpeningRequest;
+use App\Mail\Career6ConfirmationMail;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\MembersSecondRequest;
+use App\Http\Requests\ParticipantsRecruitment19Request;
 
 class eventsConteroller extends Controller
 {
@@ -121,6 +122,45 @@ class eventsConteroller extends Controller
         ]);
         $participant = Career6::create($request->all());
         // Mail::to($participant->email)->send(new Career6ConfirmationMail($participant->name, $participant->session));
+        return back()->with(['status' => 'You are registered successfully!!']);
+    }
+
+
+    public function highway19()
+    {
+        $sessions = CWorkshop::where('status', 1)->get();
+        $event = Event::where('title', 'Highway')->first();
+        return view('user.events.highway.index', compact('sessions', 'event'));
+    }
+
+    public function highway19Store(Request $request)
+    {
+        $session = $request->session;
+        $this->validate($request, [
+            'name' => 'required|string|min:2',
+            'session' => 'required|exists:c_workshops,id',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('career6s')->where(function ($query) use($session) {
+                    return $query->where('session', $session);
+                }),
+            ],
+            'phone' => 'required|string|max:11',
+            'national_id' => 'required|string|max:14|min:14',
+            'facebook_link' => 'required|url',
+            'university' => 'required|string|min:2',
+            'faculty' => 'required_unless:form,juniors|string|min:2',
+            'department' => 'required_unless:form,juniors|string|min:2',
+            'academic_year' => 'required|string|min:2',
+            'cv' => 'required|file|mimes:pdf',
+            'why' => 'required'
+        ]);
+        $file_name = $request->cv->getClientOriginalName();
+        $path = $request->cv->storeAs('/public/highwaycvs/' . $request->email, $file_name);
+        $request['cv_file'] = $path;
+        // return $request->cv_file;
+        $member = Highway::create($request->all());
         return back()->with(['status' => 'You are registered successfully!!']);
     }
 
