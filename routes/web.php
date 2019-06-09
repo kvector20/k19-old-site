@@ -47,6 +47,11 @@ Route::group(['namespace' => 'User'], function() {
 	Route::POST('/events/highway/19', 'eventsConteroller@highway19Store')->name('events.highway19');
 
 	// -------------------------------- Highway -----------------------------------------------------
+	
+	// -------------------------------- High Board -----------------------------------------------------
+	Route::get('/events/highboard/20', 'eventsConteroller@highboard20')->name('events.highboard20');
+	Route::POST('/events/highboard/20', 'eventsConteroller@highboard20Store')->name('events.highboard20');
+	// -------------------------------- High Board -----------------------------------------------------
 
 	Route::get('/k19/magazine/m/{month}', 'magazineController@index')->name('k19.magazine.month');
 	Route::get('/k19/magazine/h/{headline}', 'magazineController@index_h')->name('k19.magazine.headline');

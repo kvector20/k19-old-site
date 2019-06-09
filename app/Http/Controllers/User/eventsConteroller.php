@@ -16,9 +16,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\OpeningRequest;
 use App\Mail\Career6ConfirmationMail;
+use App\Http\Requests\HighBoard20Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\MembersSecondRequest;
 use App\Http\Requests\ParticipantsRecruitment19Request;
+use App\Models\Highboard20;
 
 class eventsConteroller extends Controller
 {
@@ -162,6 +164,29 @@ class eventsConteroller extends Controller
         // return $request->cv_file;
         $member = Highway::create($request->all());
         return back()->with(['status' => 'You are registered successfully!!']);
+    }
+
+    public function highboard20()
+    {
+        $event = Event::where('title', 'High Board Recruitment')->first();
+        return view('user.events.highboard.index', compact('event'));
+    }
+
+    public function highboard20Store(HighBoard20Request $request)
+    {
+        $highboard = new Highboard20;
+        $highboard->name = $request->name;
+        $highboard->email = $request->email;
+        $highboard->phone = $request->phone;
+        $highboard->facebook_link = $request->facebook_link;
+        $highboard->university = $request->university;
+        $highboard->faculty = $request->faculty;
+        $highboard->department = $request->department;
+        $highboard->academic_year = $request->academic_year;
+        $highboard->position = $request->position;
+        $highboard->experience = nl2br($request->experience);
+        $highboard->save();
+        return back()->with(['status' => 'Submitted Successfully!!']);
     }
 
 }
