@@ -122,6 +122,9 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::GET('admin/highway19/data', 'Highway19Controller@show')->name('highway19.data');
 	Route::POST('admin/highway19/data', 'Highway19Controller@data')->name('highway19.data');
 
+	// High Board 20
+	Route::GET('admin/highboard20', 'HighBoard20Controller@index')->name('highboard20.index');
+
 	Route::GET('admin/file', 'Career6Controller@file');
 	Route::resource('admin/contact', 'ContactController');
 });

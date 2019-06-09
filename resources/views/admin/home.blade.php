@@ -19,6 +19,23 @@
     <section class="content">
       <!-- Small boxes (Stat box) -->
       <div class="row">
+      @can('highboard20.view', Auth::user())
+          <!-- ./col -->
+          <div class="col-md-3">
+            <!-- small box -->
+            <div class="small-box bg-orange">
+              <div class="inner">
+                <h3>{{ $highboard20_count }}<sup style="font-size: 20px">Applicants</sup></h3>
+
+                <p>High Board number</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="{{ route('highboard20.index') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+      @endcan
       @can('highway.view', Auth::user())
           <!-- ./col -->
           <div class="col-md-3">

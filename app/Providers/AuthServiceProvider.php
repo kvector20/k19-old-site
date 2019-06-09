@@ -41,5 +41,6 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('career6.view', 'App\Policies\Career6Policy@view');
         Gate::define('career6.session', 'App\Policies\Career6Policy@session');
         Gate::define('highway.view', 'App\Policies\Highway19Policy@view');
+        Gate::define('highboard20.view', 'App\Policies\HighBoard20Policy@view');
     }
 }
