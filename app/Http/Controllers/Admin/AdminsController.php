@@ -148,4 +148,11 @@ class AdminsController extends Controller
         }
         abort(404);
     }
+    
+    public function activate(Request $request, User $admin)
+    {
+        $admin->active = !($admin->active);
+        $admin->save();
+        return back()->with(['status' => 'Updated Successfully!!']);
+    }
 }

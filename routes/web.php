@@ -91,6 +91,8 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::POST('admin/info/edit', 'ProfileController@editInfo')->name('admin.info.edit');
 	// get all admins
 	Route::resource('admin/admins', 'AdminsController');
+	Route::PUT('admin/admins/activate/{admin}', 'AdminsController@activate')->name('admins.activate');
+
 	Route::resource('admin/roles', 'RolesController');
 	Route::resource('admin/permissions', 'PermissionsController');
 	Route::resource('admin/headlines', 'HeadlinesController');

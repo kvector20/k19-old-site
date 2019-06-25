@@ -43,6 +43,7 @@ Admins
 	                  <th>Name</th>
 	                  <th>Email</th>
 	                  <th>Role</th>
+	                  <th>Active</th>
 	                  <th>Controls</th>
 	                  <th>Added From</th>
 	                  <th>Updated From</th>
@@ -57,6 +58,39 @@ Admins
 	                		<td>{{ $admin->name }}</td>
 	                		<td>{{ $admin->email }}</td>
 	                		<td>{{ $admin->position->committee }} {{ $admin->position->position }}</td>
+	                		<td>
+								@can('admins.update', Auth::user())
+									@if ($admin->active)
+										<a 
+											href="#" 
+											class="btn btn-success btn-xs"
+											onclick="
+													event.preventDefault();
+													if(confirm('Are you sure you want to deactivate this account?')) {
+														$(this).siblings('form').submit();
+													}"
+										 data-toggle="tooltip" data-placement="top" title="Active"><i class="fa fa-check"></i></a>
+										<form action="{{ route('admins.activate',$admin->id) }}" method="POST">
+											{{ csrf_field() }}
+											{{ method_field('PUT') }}
+										</form>
+									@else
+										<a 
+											href="#" 
+											class="btn btn-danger btn-xs"
+											onclick="
+													event.preventDefault();
+													if(confirm('Are you sure you want to activate this account?')) {
+														$(this).siblings('form').submit();
+													}"
+										data-toggle="tooltip" data-placement="top" title="Not Active"><i class="fa fa-times"></i></a>
+										<form action="{{ route('admins.activate',$admin->id) }}" method="POST">
+											{{ csrf_field() }}
+											{{ method_field('PUT') }}
+										</form>
+									@endif
+								@endcan
+							</td>
 	                		<td>
 	                			@can('admins.update', Auth::user())
 	                				<a href="{{ route('admins.edit', $admin->id) }}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
