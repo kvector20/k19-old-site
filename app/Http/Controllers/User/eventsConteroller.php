@@ -8,10 +8,12 @@ use App\Models\Career6;
 use App\Models\Workshop;
 use App\Models\CWorkshop;
 use App\Models\Opening19;
+use App\Models\Highboard20;
 use App\Models\MemberSecond;
 use Illuminate\Http\Request;
 use App\Models\Participants19;
 use Illuminate\Validation\Rule;
+use App\Models\HeadsDescription;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\OpeningRequest;
@@ -20,7 +22,6 @@ use App\Http\Requests\HighBoard20Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\MembersSecondRequest;
 use App\Http\Requests\ParticipantsRecruitment19Request;
-use App\Models\Highboard20;
 
 class eventsConteroller extends Controller
 {
@@ -189,4 +190,11 @@ class eventsConteroller extends Controller
         return back()->with(['status' => 'Submitted Successfully!!']);
     }
 
+
+    public function heads20()
+    {
+        $event = Event::where('title', 'Heads Recruitment')->first();
+        $headsDescription = HeadsDescription::all();
+        return view('user.events.heads.index', compact('event', 'headsDescription'));
+    }
 }

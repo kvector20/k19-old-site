@@ -52,6 +52,10 @@ Route::group(['namespace' => 'User'], function() {
 	Route::get('/events/highboard/20', 'eventsConteroller@highboard20')->name('events.highboard20');
 	Route::POST('/events/highboard/20', 'eventsConteroller@highboard20Store')->name('events.highboard20');
 	// -------------------------------- High Board -----------------------------------------------------
+	
+	// -------------------------------- Heads -----------------------------------------------------
+	Route::get('/events/heads/20', 'eventsConteroller@heads20')->name('events.heads20');
+	// -------------------------------- Heads -----------------------------------------------------
 
 	Route::get('/k19/magazine/m/{month}', 'magazineController@index')->name('k19.magazine.month');
 	Route::get('/k19/magazine/h/{headline}', 'magazineController@index_h')->name('k19.magazine.headline');
@@ -100,6 +104,8 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::post('admin/topics/{topic}/publish', 'TopicsController@publish')->name('topics.publish');
 	Route::resource('admin/events', 'EventsController');
 	Route::resource('admin/workshops', 'WorkshopsController');
+	
+	Route::resource('admin/headsDescription', 'HeadsDescriptionController');
 	
 	Route::GET('admin/participants19', 'Participants19Controller@index')->name('participants19.index');
 	Route::GET('admin/participants19/rejected', 'Participants19Controller@rejected')->name('participants19.rejected');

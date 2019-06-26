@@ -85,6 +85,23 @@
             </ul>
           </li>
         @endcan
+        
+        @can('headsDescription.view', Auth::user())
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-calendar"></i> <span>Heads Description</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('headsDescription.index') }}"><i class="fa text-red fa-circle-o"></i> View</a></li>
+              @can('headsDescription.create', Auth::user())
+                <li><a href="{{ route('headsDescription.create') }}"><i class="fa text-purple fa-circle-o"></i> New</a></li>
+              @endcan
+            </ul>
+          </li>
+        @endcan
 
         @can('career6.view', Auth::user())
           <li class="treeview">
